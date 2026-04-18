@@ -29,12 +29,13 @@ for (const [name, fp] of Object.entries(logPaths)) {
     jsxMarkup = contentStr;
   }
   
-  if (jsxMarkup.startsWith('(')) {
-    jsxMarkup = jsxMarkup.substring(1);
-  }
-  if (jsxMarkup.endsWith(')')) {
-    jsxMarkup = jsxMarkup.substring(0, jsxMarkup.length - 1);
-  }
+  // Clean up boundaries
+  if (jsxMarkup.startsWith('(')) jsxMarkup = jsxMarkup.substring(1);
+  if (jsxMarkup.endsWith(')')) jsxMarkup = jsxMarkup.substring(0, jsxMarkup.length - 1);
+  
+  // CRITICAL FIX: Only modify the VERY FIRST div of the entire React string to force it to fill the 1800x1800 box.
+  // The global /g regex before aggressively blew up all tiny internal nodes (like chips) into massive black screens.
+  jsxMarkup = jsxMarkup.replace('<div style={{', '<div style={{ width: "100%", height: "100%",');
   
   const component = `
 export default function ${name}() {
@@ -64,4 +65,4 @@ export default function Vault() {
 `;
 fs.writeFileSync(path.join(pagesDir, 'Vault.jsx'), vaultStub.trim());
 
-console.log('Successfully extracted Paper canvases into standard React pages!');
+console.log('Re-extracted original raw logs successfully without corrupting internal absolute elements.');

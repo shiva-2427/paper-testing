@@ -3,7 +3,7 @@ export default function Engine() {
     <div style={{ paddingBottom: '120px', width: '100%', minHeight: '100vh', display: 'flex', justifyContent: 'center' }}>
       <div style={{ transform: 'scale(0.65)', transformOrigin: 'top center', width: '1800px', height: '1800px', position: 'relative' }}>
         
-    <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
+    <div style={{ width: "100%", height: "100%", backgroundColor: '#0A0A0F', boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
       <div style={{ backgroundImage: 'radial-gradient(circle farthest-corner at 50% 50% in oklab, oklab(54.1% 0.096 -0.227 / 20%) 0%, oklab(71.5% -0.103 -0.073 / 10%) 40%, oklab(0% -.0001 -.0001 / 0%) 70%)', boxSizing: 'border-box', height: '1000px', left: '400px', position: 'absolute', top: '400px', width: '1000px' }} />
       <div style={{ alignItems: 'center', backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF1F', borderRadius: '20px', borderStyle: 'solid', borderWidth: '1px', boxShadow: '#FFFFFF08 0px 0px 16px inset, #7C3AED4D 0px 0px 60px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', height: '140px', justifyContent: 'center', left: '700px', position: 'absolute', top: '760px', width: '400px' }}>
         <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', gap: '12px', marginBottom: '8px' }}>
@@ -126,22 +126,22 @@ export default function Engine() {
           PUBLISH QUEUE
         </div>
       </div>
-      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '540px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '815px' }}>
+      <div style={{ backgroundColor: '#0A0A0F', borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '540px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '815px' }}>
         <div style={{ boxSizing: 'border-box', color: '#FFFFFFB3', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', lineHeight: '14px' }}>
           expand → long form
         </div>
       </div>
-      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '1130px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '815px' }}>
+      <div style={{ backgroundColor: '#0A0A0F', borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '1130px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '815px' }}>
         <div style={{ boxSizing: 'border-box', color: '#FFFFFFB3', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', lineHeight: '14px' }}>
           compress → punchy
         </div>
       </div>
-      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '915px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '1000px' }}>
+      <div style={{ backgroundColor: '#0A0A0F', borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '915px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '1000px' }}>
         <div style={{ boxSizing: 'border-box', color: '#FFFFFFB3', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', lineHeight: '14px' }}>
           structure → outline
         </div>
       </div>
-      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '915px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '620px' }}>
+      <div style={{ backgroundColor: '#0A0A0F', borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '915px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '620px' }}>
         <div style={{ boxSizing: 'border-box', color: '#FFFFFFB3', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', lineHeight: '14px' }}>
           dramatize → script
         </div>
@@ -166,7 +166,7 @@ export default function Engine() {
           Pulse
         </div>
       </div>
-      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", boxSizing: 'border-box', height: '1800px', left: 75, overflow: 'clip', position: 'absolute', top: 2100, width: '1800px' }}>
+      <div style={{ backgroundColor: '#0A0A0F', boxSizing: 'border-box', height: '1800px', left: 75, overflow: 'clip', position: 'absolute', top: 2100, width: '1800px' }}>
         <div style={{ backgroundImage: 'radial-gradient(circle farthest-corner at 50% 0% in oklab, oklab(54.1% 0.096 -0.227 / 20%) 0%, oklab(71.5% -0.103 -0.073 / 10%) 50%, oklab(0% -.0001 -.0001 / 0%) 100%)', boxSizing: 'border-box', height: '800px', left: '400px', position: 'absolute', top: '0px', width: '1000px' }} />
         <div style={{ alignItems: 'center', backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#7C3AED66', borderRadius: '24px', borderStyle: 'dashed', borderWidth: '1px', boxShadow: '#7C3AED1A 0px 0px 40px inset', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', height: '160px', justifyContent: 'center', left: '450px', position: 'absolute', top: '180px', width: '900px' }}>
           <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '32px', lineHeight: '40px', marginBottom: '12px' }}>

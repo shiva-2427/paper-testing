@@ -3,7 +3,7 @@ export default function Pulse() {
     <div style={{ paddingBottom: '120px', width: '100%', minHeight: '100vh', display: 'flex', justifyContent: 'center' }}>
       <div style={{ transform: 'scale(0.65)', transformOrigin: 'top center', width: '1800px', height: '1800px', position: 'relative' }}>
         
-    <div style={{ backgroundColor: '#0A0A0F', boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
+    <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
       <div style={{ boxSizing: 'border-box', display: 'flex', gap: '24px', justifyContent: 'space-between', left: '100px', position: 'absolute', top: '220px', width: '1600px' }}>
         <div style={{ backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF1A', borderRadius: '20px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', overflow: 'clip', paddingBlock: '32px', paddingInline: '32px', position: 'relative' }}>
           <div style={{ boxSizing: 'border-box', color: '#FFFFFF80', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 600, letterSpacing: '0.05em', lineHeight: '18px', marginBottom: '8px', textTransform: 'uppercase' }}>

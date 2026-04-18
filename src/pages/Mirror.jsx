@@ -3,7 +3,7 @@ export default function Mirror() {
     <div style={{ paddingBottom: '120px', width: '100%', minHeight: '100vh', display: 'flex', justifyContent: 'center' }}>
       <div style={{ transform: 'scale(0.65)', transformOrigin: 'top center', width: '1800px', height: '1800px', position: 'relative' }}>
         
-    <div style={{ backgroundColor: '#0A0A0F', boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
+    <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
       <div style={{ backgroundImage: 'radial-gradient(circle farthest-corner at 50% 50% in oklab, oklab(76.9% 0.056 0.155 / 15%) 0%, oklab(54.1% 0.096 -0.227 / 10%) 50%, oklab(0% 0 -.0001 / 0%) 80%)', boxSizing: 'border-box', height: '1000px', left: '400px', position: 'absolute', top: '200px', width: '1000px' }} />
       <div style={{ alignItems: 'center', backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#F59E0B66', borderRadius: '24px', borderStyle: 'dashed', borderWidth: '1px', boxShadow: '#F59E0B1A 0px 0px 30px inset, #F59E0B26 0px 0px 40px', boxSizing: 'border-box', display: 'flex', height: '120px', justifyContent: 'center', left: '740px', position: 'absolute', top: '690px', width: '320px' }}>
         <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '28px', lineHeight: '34px', marginRight: '12px' }}>
@@ -108,27 +108,27 @@ export default function Mirror() {
           • Clean, unstyled data visualizations<br />• Extremely concise bullet points<br />• The word "Framework"
         </div>
       </div>
-      <div style={{ backgroundColor: '#0A0A0F', borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '830px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '520px' }}>
+      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '830px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '520px' }}>
         <div style={{ boxSizing: 'border-box', color: '#F59E0BCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', lineHeight: '14px' }}>
           speak to this →
         </div>
       </div>
-      <div style={{ backgroundColor: '#0A0A0F', borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '1080px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '620px' }}>
+      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '1080px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '620px' }}>
         <div style={{ boxSizing: 'border-box', color: '#F59E0BCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', lineHeight: '14px' }}>
           speak to this →
         </div>
       </div>
-      <div style={{ backgroundColor: '#0A0A0F', borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '1060px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '820px' }}>
+      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '1060px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '820px' }}>
         <div style={{ boxSizing: 'border-box', color: '#F59E0BCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', lineHeight: '14px' }}>
           speak to this →
         </div>
       </div>
-      <div style={{ backgroundColor: '#0A0A0F', borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '630px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '820px' }}>
+      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '630px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '820px' }}>
         <div style={{ boxSizing: 'border-box', color: '#F59E0BCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', lineHeight: '14px' }}>
           speak to this →
         </div>
       </div>
-      <div style={{ backgroundColor: '#0A0A0F', borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '600px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '620px' }}>
+      <div style={{ width: "100%", height: "100%", backgroundColor: "#0A0A0F", borderColor: '#F59E0B33', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', left: '600px', paddingBlock: '4px', paddingInline: '10px', position: 'absolute', top: '620px' }}>
         <div style={{ boxSizing: 'border-box', color: '#F59E0BCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', lineHeight: '14px' }}>
           speak to this →
         </div>

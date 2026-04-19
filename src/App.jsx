@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Navigation from './components/Navigation';
+import BackgroundDust from './components/BackgroundDust';
 import Engine from './pages/Engine';
 import Vault from './pages/Vault';
 import Mirror from './pages/Mirror';
@@ -28,6 +29,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <div style={{ position: 'relative', minHeight: '100vh', width: '100vw', backgroundColor: '#0a0a0f', overflowX: 'hidden' }}>
+        <BackgroundDust />
         <AnimatedRoutes />
         <Navigation />
       </div>

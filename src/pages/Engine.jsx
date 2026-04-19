@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import useCanvasStore from '../store/canvasStore';
 
-const NodeCard = ({ title, status, platform, color, delay, pos }) => {
+const NodeCard = ({ title, status, platform, color, delay, pos, isVisible }) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay, duration: 0.6, ease: "easeOut" }}
+      animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+      transition={{ delay: isVisible ? delay : 0, duration: 0.6, ease: "easeOut" }}
       className={`absolute flex flex-col`}
       style={{
         left: pos.left,
@@ -21,7 +21,8 @@ const NodeCard = ({ title, status, platform, color, delay, pos }) => {
         borderStyle: 'solid',
         borderWidth: '1px',
         padding: '24px',
-        zIndex: 10
+        zIndex: 10,
+        pointerEvents: isVisible ? 'auto' : 'none'
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px', alignItems: 'center' }}>
@@ -211,24 +212,28 @@ export default function Engine() {
         pos={{ left: '22%', top: '50%' }} 
         status={agentStatus === 'idle' ? 'Awaiting' : (agentStatus === 'thinking' ? 'generating...' : 'ready')}
         title={getContent('LinkedIn')}
+        isVisible={agentStatus !== 'idle'}
       />
       <NodeCard 
         platform="Twitter" delay={0.30} color="#06B6D4" 
         pos={{ left: '78%', top: '50%' }} 
         status={agentStatus === 'idle' ? 'Awaiting' : (agentStatus === 'thinking' ? 'generating...' : 'ready')}
         title={getContent('Twitter')}
+        isVisible={agentStatus !== 'idle'}
       />
       <NodeCard 
         platform="Video" delay={0.45} color="#7C3AED" 
         pos={{ left: '50%', top: '18%' }} 
         status={agentStatus === 'idle' ? 'Awaiting' : (agentStatus === 'thinking' ? 'generating...' : 'ready')}
         title={getContent('Video')}
+        isVisible={agentStatus !== 'idle'}
       />
       <NodeCard 
         platform="Blog" delay={0.60} color="#2DD4BF" 
         pos={{ left: '50%', top: '82%' }} 
         status={agentStatus === 'idle' ? 'Awaiting' : (agentStatus === 'thinking' ? 'generating...' : 'ready')}
         title={getContent('Blog')}
+        isVisible={agentStatus !== 'idle'}
       />
 
     </motion.div>

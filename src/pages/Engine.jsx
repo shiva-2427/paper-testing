@@ -195,8 +195,9 @@ export default function Engine() {
               Agents are thinking...
             </div>
           )}
+            </motion.div>
           </motion.div>
-        </motion.div>
+        </div>
 
         <NodeCard platform="LinkedIn" delay={0.15} color="#60A5FA" pos={{ left: '20%', top: '50%' }} status={agentStatus === 'idle' ? 'STANDBY' : (agentStatus === 'thinking' ? 'generating...' : 'READY')} title={getContent('LinkedIn')} isVisible={agentStatus !== 'idle'} />
         <NodeCard platform="Twitter" delay={0.30} color="#06B6D4" pos={{ left: '80%', top: '50%' }} status={agentStatus === 'idle' ? 'STANDBY' : (agentStatus === 'thinking' ? 'generating...' : 'READY')} title={getContent('Twitter')} isVisible={agentStatus !== 'idle'} />

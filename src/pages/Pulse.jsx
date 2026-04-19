@@ -1,8 +1,15 @@
 export default function Pulse() {
   return (
-    <div style={{ paddingBottom: '120px', width: '100%', minHeight: '100vh', display: 'flex', justifyContent: 'center' }}>
-      {/* We strictly add overflow: 'hidden' here to prevent embedded sibling artboards (stacked screens) from bleeding down the page */}
-      <div style={{ transform: 'scale(0.65)', transformOrigin: 'top center', width: '1800px', height: '1800px', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+      {/* We strictly use CSS calculation for scale to perfectly fit any laptop or monitor screen without scrolling */}
+      <div style={{ 
+        transform: 'scale(calc(min(90vh, 100vw) / 1800))', 
+        transformOrigin: 'center center', 
+        width: '1800px', 
+        height: '1800px', 
+        position: 'absolute', 
+        overflow: 'hidden' 
+      }}>
         
     <div style={{ width: "100%", height: "100%", backgroundColor: '#0A0A0F', boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
       <div style={{ boxSizing: 'border-box', display: 'flex', gap: '24px', justifyContent: 'space-between', left: '100px', position: 'absolute', top: '220px', width: '1600px' }}>
@@ -61,7 +68,7 @@ export default function Pulse() {
           Real-time engagement forensics from the last 7 days.
         </div>
       </div>
-      <div style={{ alignItems: 'center', backdropFilter: 'blur(40px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF26', borderRadius: '32px', borderStyle: 'solid', borderWidth: '1px', boxShadow: '#00000080 0px 10px 40px', boxSizing: 'border-box', display: 'flex', height: '64px', justifyContent: 'space-evenly', left: '550px', paddingInline: '12px', position: 'absolute', top: '1680px', width: '700px' }}>
+      <div style={{ alignItems: 'center', backdropFilter: 'blur(40px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF26', borderRadius: '32px', borderStyle: 'solid', borderWidth: '1px', boxShadow: '#00000080 0px 10px 40px', boxSizing: 'border-box', display: 'flex', height: '64px', justifyContent: 'space-evenly', left: '550px', paddingInline: '12px', position: 'absolute', top: '1680px', width: '700px', display: 'none' }}>
         <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
           Engine
         </div>

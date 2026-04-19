@@ -34,15 +34,28 @@ for (const [name, fp] of Object.entries(logPaths)) {
   if (jsxMarkup.startsWith('(')) jsxMarkup = jsxMarkup.substring(1);
   if (jsxMarkup.endsWith(')')) jsxMarkup = jsxMarkup.substring(0, jsxMarkup.length - 1);
   
-  // CRITICAL FIX: Only modify the VERY FIRST div of the entire React string to force it to fill the 1800x1800 box.
+  // Force wrapper to 100% via the first div
   jsxMarkup = jsxMarkup.replace('<div style={{', '<div style={{ width: "100%", height: "100%",');
+  
+  // HIDE the duplicate mockup navigation from the JSON so only the global one in App.jsx shows!
+  // We match the 'top: '1680px'' or similar properties of the navigation wrapper.
+  jsxMarkup = jsxMarkup.replace(/top: '1680px', width: '700px' \}/g, "top: '1680px', width: '700px', display: 'none' }");
+  // Also catch variations without quotes if they exist
+  jsxMarkup = jsxMarkup.replace(/top: 1680, width: '700px'/g, "top: 1680, width: '700px', display: 'none'");
   
   const component = `
 export default function ${name}() {
   return (
-    <div style={{ paddingBottom: '120px', width: '100%', minHeight: '100vh', display: 'flex', justifyContent: 'center' }}>
-      {/* We strictly add overflow: 'hidden' here to prevent embedded sibling artboards (stacked screens) from bleeding down the page */}
-      <div style={{ transform: 'scale(0.65)', transformOrigin: 'top center', width: '1800px', height: '1800px', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+      {/* We strictly use CSS calculation for scale to perfectly fit any laptop or monitor screen without scrolling */}
+      <div style={{ 
+        transform: 'scale(calc(min(90vh, 100vw) / 1800))', 
+        transformOrigin: 'center center', 
+        width: '1800px', 
+        height: '1800px', 
+        position: 'absolute', 
+        overflow: 'hidden' 
+      }}>
         ${jsxMarkup}
       </div>
     </div>
@@ -52,5 +65,4 @@ export default function ${name}() {
   fs.writeFileSync(path.join(pagesDir, name + '.jsx'), component.trim());
 }
 
-console.log('Re-extracted original raw logs. Strictly bounded overlapping/stacked screens via overflow clipping wrapper.');
-
+console.log('Regenerated pages with viewport-adaptive scaling and hidden duplicate navbars.');

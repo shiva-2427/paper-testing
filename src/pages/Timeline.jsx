@@ -1,7 +1,8 @@
 export default function Timeline() {
   return (
     <div style={{ paddingBottom: '120px', width: '100%', minHeight: '100vh', display: 'flex', justifyContent: 'center' }}>
-      <div style={{ transform: 'scale(0.65)', transformOrigin: 'top center', width: '1800px', height: '1800px', position: 'relative' }}>
+      {/* We strictly add overflow: 'hidden' here to prevent embedded sibling artboards (stacked screens) from bleeding down the page */}
+      <div style={{ transform: 'scale(0.65)', transformOrigin: 'top center', width: '1800px', height: '1800px', position: 'relative', overflow: 'hidden' }}>
         
     <div style={{ width: "100%", height: "100%", backgroundColor: '#0A0A0F', boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
       <div style={{ boxSizing: 'border-box', display: 'flex', flexDirection: 'column', left: '100px', position: 'absolute', top: '100px' }}>

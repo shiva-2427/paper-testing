@@ -3,6 +3,7 @@ import path from 'path';
 
 const logPaths = {
   Engine: 'C:/Users/tripa/.gemini/antigravity/brain/810daa7b-2a77-4e92-9880-dc7d5450c4b3/.system_generated/steps/171/output.txt',
+  Vault: 'C:/Users/tripa/.gemini/antigravity/brain/810daa7b-2a77-4e92-9880-dc7d5450c4b3/.system_generated/steps/497/output.txt',
   Mirror: 'C:/Users/tripa/.gemini/antigravity/brain/810daa7b-2a77-4e92-9880-dc7d5450c4b3/.system_generated/steps/173/output.txt',
   Timeline: 'C:/Users/tripa/.gemini/antigravity/brain/810daa7b-2a77-4e92-9880-dc7d5450c4b3/.system_generated/steps/174/output.txt',
   HookLab: 'C:/Users/tripa/.gemini/antigravity/brain/810daa7b-2a77-4e92-9880-dc7d5450c4b3/.system_generated/steps/175/output.txt',
@@ -34,14 +35,14 @@ for (const [name, fp] of Object.entries(logPaths)) {
   if (jsxMarkup.endsWith(')')) jsxMarkup = jsxMarkup.substring(0, jsxMarkup.length - 1);
   
   // CRITICAL FIX: Only modify the VERY FIRST div of the entire React string to force it to fill the 1800x1800 box.
-  // The global /g regex before aggressively blew up all tiny internal nodes (like chips) into massive black screens.
   jsxMarkup = jsxMarkup.replace('<div style={{', '<div style={{ width: "100%", height: "100%",');
   
   const component = `
 export default function ${name}() {
   return (
     <div style={{ paddingBottom: '120px', width: '100%', minHeight: '100vh', display: 'flex', justifyContent: 'center' }}>
-      <div style={{ transform: 'scale(0.65)', transformOrigin: 'top center', width: '1800px', height: '1800px', position: 'relative' }}>
+      {/* We strictly add overflow: 'hidden' here to prevent embedded sibling artboards (stacked screens) from bleeding down the page */}
+      <div style={{ transform: 'scale(0.65)', transformOrigin: 'top center', width: '1800px', height: '1800px', position: 'relative', overflow: 'hidden' }}>
         ${jsxMarkup}
       </div>
     </div>
@@ -51,18 +52,5 @@ export default function ${name}() {
   fs.writeFileSync(path.join(pagesDir, name + '.jsx'), component.trim());
 }
 
-const vaultStub = `
-export default function Vault() {
-  return (
-    <div style={{ position: 'relative', width: '100%', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-      <div style={{ textAlign: 'center' }}>
-        <h1 style={{ fontSize: '48px', marginBottom: '20px' }}>Idea Vault</h1>
-        <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px' }}>Content storage securely backed from Screen 2.</p>
-      </div>
-    </div>
-  );
-}
-`;
-fs.writeFileSync(path.join(pagesDir, 'Vault.jsx'), vaultStub.trim());
+console.log('Re-extracted original raw logs. Strictly bounded overlapping/stacked screens via overflow clipping wrapper.');
 
-console.log('Re-extracted original raw logs successfully without corrupting internal absolute elements.');

@@ -8,41 +8,30 @@ const VaultCard = ({ title, score, status, platform1, platform2, delay }) => {
     <motion.div
       initial={{ opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ scale: 1.02, borderColor: 'rgba(255, 255, 255, 0.3)', boxShadow: '0 10px 30px rgba(0,0,0,0.5)' }}
+      whileHover={{ scale: 1.02, y: -4, boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)' }}
       transition={{ delay, duration: 0.4, ease: "easeOut", scale: { duration: 0.2, ease: "easeOut" } }}
-      style={{
-        backdropFilter: 'blur(24px)',
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-        borderColor: 'rgba(255, 255, 255, 0.1)',
-        borderRadius: '16px',
-        borderStyle: 'solid',
-        borderWidth: '1px',
-        padding: '24px',
-        display: 'flex',
-        flexDirection: 'column',
-        height: '240px',
-        cursor: 'pointer'
-      }}
+      className="bg-zinc-900/60 border border-white/10 rounded-2xl p-6 flex flex-col min-h-[220px] cursor-pointer hover:border-white/20 transition-colors backdrop-blur-md"
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-        <div style={{ backgroundColor: 'rgba(255, 100, 60, 0.1)', border: '1px solid rgba(255, 100, 60, 0.2)', borderRadius: '12px', padding: '4px 10px', display: 'flex', alignItems: 'center' }}>
-          <span style={{ color: '#FF8C66', fontSize: '12px', fontWeight: 600 }}>🔥 {animatedScore}/100</span>
+      <div className="flex justify-between items-center mb-6">
+        <div className="flex items-center gap-1.5 bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-xl">
+          <span className="text-amber-500 text-xs font-bold font-sans tracking-wide">🔥 {animatedScore}/100</span>
         </div>
-        <div style={{ color: status === 'IN ENGINE' ? '#7C3AED' : 'rgba(255,255,255,0.4)', fontSize: '10px', fontWeight: 600, border: status === 'IN ENGINE' ? '1px solid rgba(124, 58, 237, 0.5)' : 'none', padding: status === 'IN ENGINE' ? '2px 8px' : '0', borderRadius: '8px' }}>
+        <div className={`text-[10px] font-bold uppercase py-0.5 px-2 rounded-lg 
+          ${status === 'IN ENGINE' ? 'text-violet-400 border border-violet-500/50' : 'text-white/40'}`}>
           {status}
         </div>
       </div>
-      <div style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 600, lineHeight: '1.4', flexGrow: 1 }}>
+      <div className="text-white text-lg font-semibold leading-relaxed flex-grow">
         {title}
       </div>
-      <div style={{ display: 'flex', gap: '8px' }}>
+      <div className="flex gap-2 mt-4">
         {platform1 && (
-          <div style={{ backgroundColor: 'rgba(6, 182, 212, 0.1)', color: '#06B6D4', padding: '4px 8px', borderRadius: '6px', fontSize: '11px', fontWeight: 500 }}>
+          <div className="bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-lg text-xs font-semibold">
             {platform1}
           </div>
         )}
         {platform2 && (
-          <div style={{ backgroundColor: 'rgba(124, 58, 237, 0.1)', color: '#7C3AED', padding: '4px 8px', borderRadius: '6px', fontSize: '11px', fontWeight: 500 }}>
+          <div className="bg-violet-500/10 text-violet-400 px-3 py-1 rounded-lg text-xs font-semibold">
             {platform2}
           </div>
         )}
@@ -63,43 +52,33 @@ export default function Vault() {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -16 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      style={{ width: '100vw', minHeight: '100vh', display: 'flex', flexDirection: 'column', padding: '60px', boxSizing: 'border-box' }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen w-full flex flex-col items-center justify-start overflow-y-auto pb-32 pt-20"
     >
-      <div style={{ maxWidth: '1400px', margin: '0 auto', width: '100%', paddingBottom: '120px' }}>
-        <div style={{ marginBottom: '40px' }}>
-          <h1 style={{ fontSize: '32px', fontWeight: 700, margin: '0 0 8px 0' }}>Idea Vault</h1>
-          <p style={{ color: 'rgba(255,255,255,0.6)', margin: 0 }}>Predicted high-virality concepts saved for later.</p>
+      <div className="max-w-6xl w-full mx-auto px-6 py-10 flex flex-col gap-10">
+        
+        <div className="flex flex-col items-center text-center gap-2">
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Idea Vault</h1>
+          <p className="text-lg text-zinc-400">Predicted high-virality concepts saved for later.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(380px, 1fr))', gap: '24px', marginBottom: '60px' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10 w-full">
           {cards.map((c, i) => (
-            <VaultCard key={i} {...c} delay={0.08 * i} />
+            <VaultCard key={i} {...c} delay={0.1 * i} />
           ))}
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <motion.div
+        <div className="flex justify-center w-full">
+          <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            style={{
-              padding: '20px 40px',
-              borderRadius: '32px',
-              background: 'linear-gradient(135deg, rgba(124, 58, 237, 0.4) 0%, rgba(6, 182, 212, 0.4) 100%)',
-              border: '1px solid rgba(255,255,255,0.2)',
-              boxShadow: '0 0 30px rgba(124, 58, 237, 0.2)',
-              color: '#fff',
-              fontSize: '16px',
-              fontWeight: 700,
-              letterSpacing: '0.1em',
-              cursor: 'pointer'
-            }}
+            className="px-8 py-4 rounded-full bg-gradient-to-br from-violet-600/60 to-cyan-600/60 border border-white/20 text-white font-bold tracking-widest cursor-pointer shadow-[0_0_30px_rgba(124,58,237,0.2)]"
           >
             SEND TO CONTENT ENGINE
-          </motion.div>
+          </motion.button>
         </div>
       </div>
     </motion.div>

@@ -2,8 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export default function Navigation() {
-  const loc = useLocation();
-  const path = loc.pathname;
+  const location = useLocation();
+  const path = location.pathname;
 
   const links = [
     { path: '/', label: 'Engine' },
@@ -15,55 +15,22 @@ export default function Navigation() {
   ];
 
   return (
-    <div style={{
-      position: 'fixed',
-      bottom: '24px',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      alignItems: 'center',
-      backdropFilter: 'blur(40px)',
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-      borderColor: 'rgba(255, 255, 255, 0.15)',
-      borderRadius: '32px',
-      borderStyle: 'solid',
-      borderWidth: '1px',
-      boxShadow: 'rgba(0, 0, 0, 0.5) 0px 10px 40px',
-      display: 'flex',
-      height: '64px',
-      paddingInline: '8px',
-      zIndex: 9999
-    }}>
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center bg-zinc-900/60 backdrop-blur-2xl border border-white/10 rounded-full h-16 px-2 z-[9999] shadow-[0_10px_40px_rgba(0,0,0,0.5)]">
       {links.map(l => {
         const isActive = path === l.path;
         return (
           <Link
             key={l.path}
             to={l.path}
-            style={{
-              position: 'relative',
-              padding: '10px 24px',
-              textDecoration: 'none',
-              borderRadius: '24px',
-              color: isActive ? '#7C3AED' : 'rgba(255, 255, 255, 0.6)',
-              fontFamily: '"Inter", sans-serif',
-              fontSize: '14px',
-              fontWeight: isActive ? 600 : 500,
-              transition: 'color 0.2s ease',
-              textShadow: isActive ? '0px 0px 15px rgba(124, 58, 237, 0.8)' : 'none',
-            }}
+            className={`relative px-6 py-2.5 rounded-full font-sans text-sm transition-colors duration-200 ${
+              isActive ? 'text-violet-400 font-semibold drop-shadow-[0_0_10px_rgba(124,58,237,0.8)]' : 'text-white/60 font-medium hover:text-white'
+            }`}
           >
             {isActive && (
               <motion.div
                 layoutId="nav-pill"
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  backgroundColor: 'rgba(124, 58, 237, 0.1)',
-                  borderRadius: '24px',
-                  boxShadow: '0 0 20px rgba(124, 58, 237, 0.2)',
-                  zIndex: -1
-                }}
-                transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                className="absolute inset-0 bg-violet-600/15 rounded-full shadow-[0_0_20px_rgba(124,58,237,0.2)] -z-10"
+                transition={{ type: 'spring', stiffness: 350, damping: 30 }}
               />
             )}
             {l.label}

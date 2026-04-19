@@ -1,336 +1,169 @@
 import { motion } from 'framer-motion';
 
-export default function Timeline() {
-  return (
-    <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.96, filter: 'blur(8px)' }}
-        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-        exit={{ opacity: 0, scale: 1.02, filter: 'blur(4px)' }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        style={{ 
-          transform: 'scale(calc(min(90vh, 100vw) / 1800))', 
-          transformOrigin: 'center center', 
-          width: '1800px', 
-          height: '1800px', 
-          position: 'absolute', 
-          overflow: 'hidden' 
-        }}>
-        
-    <div style={{ width: "100%", height: "100%", backgroundColor: '#0A0A0F', boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
-      <div style={{ boxSizing: 'border-box', display: 'flex', flexDirection: 'column', left: '100px', position: 'absolute', top: '100px' }}>
-        <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex' }}>
-          <div style={{ boxSizing: 'border-box', color: '#7C3AED', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '36px', fontWeight: 700, letterSpacing: '0.05em', lineHeight: '44px', marginRight: '16px' }}>
-            🗓
-          </div>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '36px', fontWeight: 700, letterSpacing: '0.05em', lineHeight: '44px' }}>
-             THIS WEEK'S PIPELINE
-          </div>
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF80', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '16px', lineHeight: '20px', marginTop: '8px' }}>
-          Auto-generated timeline for Content Engine items
-        </div>
-      </div>
-      <div style={{ alignItems: 'center', backdropFilter: 'blur(40px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF26', borderRadius: '32px', borderStyle: 'solid', borderWidth: '1px', boxShadow: '#00000080 0px 10px 40px', boxSizing: 'border-box', display: 'flex', height: '64px', justifyContent: 'space-evenly', left: '550px', paddingInline: '12px', position: 'absolute', top: '1680px', width: '700px', display: 'none' }}>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Engine
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Vault
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Mirror
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#7C3AED', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 600, lineHeight: '18px', textShadow: '#7C3AEDCC 0px 0px 15px' }}>
-          Timeline
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Hook Lab
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Pulse
-        </div>
-      </div>
-      <div style={{ boxSizing: 'border-box', display: 'flex', gap: '16px', height: '1350px', left: '100px', position: 'absolute', top: '220px', width: '1600px' }}>
-        <div style={{ backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF14', borderRadius: '16px', borderStyle: 'dashed', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', paddingBlock: '12px', paddingInline: '12px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '16px', fontWeight: 700, letterSpacing: '0.1em', lineHeight: '20px', marginBottom: '24px', textAlign: 'center' }}>
-            MON
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Morning
-            </div>
-            <div style={{ backdropFilter: 'blur(12px)', backgroundColor: '#00000066', borderBottomColor: '#FFFFFF1A', borderBottomStyle: 'solid', borderBottomWidth: '1px', borderLeftColor: '#FFFFFF', borderLeftStyle: 'solid', borderLeftWidth: '3px', borderRadius: '12px', borderRightColor: '#FFFFFF1A', borderRightStyle: 'solid', borderRightWidth: '1px', borderTopColor: '#FFFFFF1A', borderTopStyle: 'solid', borderTopWidth: '1px', boxShadow: '#FFFFFF66 0px 0px 20px', boxSizing: 'border-box', marginBottom: '12px', paddingBlock: '12px', paddingInline: '12px' }}>
-              <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineHeight: '18px' }}>
-                  🔗
-                </div>
-                <div style={{ backgroundColor: '#FFFFFF1A', borderRadius: '6px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px', whiteSpaceCollapse: 'collapse' }}>
-                  <div style={{ boxSizing: 'border-box', color: '#FFFFFF', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '10px', fontWeight: 600, lineHeight: '12px', width: 'max-content' }}>
-                    📤 live
-                  </div>
-                </div>
-              </div>
-              <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '13px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '0px' }}>
-                How I built a 10k MRR micro-SaaS as a solo dev.
-              </div>
-            </div>
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Afternoon
-            </div>
-          </div>
-          <div style={{ boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Evening
-            </div>
-            <div style={{ backdropFilter: 'blur(12px)', backgroundColor: '#00000066', borderBottomColor: '#FFFFFF1A', borderBottomStyle: 'solid', borderBottomWidth: '1px', borderLeftColor: '#10B981', borderLeftStyle: 'solid', borderLeftWidth: '3px', borderRadius: '12px', borderRightColor: '#FFFFFF1A', borderRightStyle: 'solid', borderRightWidth: '1px', borderTopColor: '#FFFFFF1A', borderTopStyle: 'solid', borderTopWidth: '1px', boxShadow: '#10B98133 0px 0px 15px', boxSizing: 'border-box', marginBottom: '12px', paddingBlock: '12px', paddingInline: '12px' }}>
-              <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineHeight: '18px' }}>
-                  🐦
-                </div>
-                <div style={{ backgroundColor: '#10B9811A', borderRadius: '6px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px', whiteSpaceCollapse: 'collapse' }}>
-                  <div style={{ boxSizing: 'border-box', color: '#10B981', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '10px', fontWeight: 600, lineHeight: '12px', width: 'max-content' }}>
-                    ✅ scheduled
-                  </div>
-                </div>
-              </div>
-              <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '13px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '0px' }}>
-                5 lessons from 30 days of shipping.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style={{ backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF14', borderRadius: '16px', borderStyle: 'dashed', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', paddingBlock: '12px', paddingInline: '12px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '16px', fontWeight: 700, letterSpacing: '0.1em', lineHeight: '20px', marginBottom: '24px', textAlign: 'center' }}>
-            TUE
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Morning
-            </div>
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Afternoon
-            </div>
-            <div style={{ backdropFilter: 'blur(12px)', backgroundColor: '#00000066', borderBottomColor: '#FFFFFF1A', borderBottomStyle: 'solid', borderBottomWidth: '1px', borderLeftColor: '#06B6D4', borderLeftStyle: 'solid', borderLeftWidth: '3px', borderRadius: '12px', borderRightColor: '#FFFFFF1A', borderRightStyle: 'solid', borderRightWidth: '1px', borderTopColor: '#FFFFFF1A', borderTopStyle: 'solid', borderTopWidth: '1px', boxShadow: '#06B6D433 0px 0px 15px', boxSizing: 'border-box', marginBottom: '12px', paddingBlock: '12px', paddingInline: '12px' }}>
-              <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineHeight: '18px' }}>
-                  📝
-                </div>
-                <div style={{ backgroundColor: '#06B6D41A', borderRadius: '6px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px', whiteSpaceCollapse: 'collapse' }}>
-                  <div style={{ boxSizing: 'border-box', color: '#06B6D4', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '10px', fontWeight: 600, lineHeight: '12px', width: 'max-content' }}>
-                    👁 review
-                  </div>
-                </div>
-              </div>
-              <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '13px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '0px' }}>
-                Deep dive: The solopreneur thesis.
-              </div>
-            </div>
-          </div>
-          <div style={{ boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Evening
-            </div>
-            <div style={{ backdropFilter: 'blur(12px)', backgroundColor: '#00000066', borderBottomColor: '#FFFFFF1A', borderBottomStyle: 'solid', borderBottomWidth: '1px', borderLeftColor: '#7C3AED', borderLeftStyle: 'solid', borderLeftWidth: '3px', borderRadius: '12px', borderRightColor: '#FFFFFF1A', borderRightStyle: 'solid', borderRightWidth: '1px', borderTopColor: '#FFFFFF1A', borderTopStyle: 'solid', borderTopWidth: '1px', boxShadow: '#7C3AED33 0px 0px 15px', boxSizing: 'border-box', marginBottom: '12px', paddingBlock: '12px', paddingInline: '12px' }}>
-              <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineHeight: '18px' }}>
-                  🎬
-                </div>
-                <div style={{ backgroundColor: '#7C3AED1A', borderRadius: '6px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px', whiteSpaceCollapse: 'collapse' }}>
-                  <div style={{ boxSizing: 'border-box', color: '#7C3AED', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '10px', fontWeight: 600, lineHeight: '12px', width: 'max-content' }}>
-                    ✍️ drafting
-                  </div>
-                </div>
-              </div>
-              <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '13px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '0px' }}>
-                Script: Why you should learn React.
-              </div>
-            </div>
-          </div>
-        </div>
-        <div style={{ backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF14', borderRadius: '16px', borderStyle: 'dashed', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', paddingBlock: '12px', paddingInline: '12px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '16px', fontWeight: 700, letterSpacing: '0.1em', lineHeight: '20px', marginBottom: '24px', textAlign: 'center' }}>
-            WED
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Morning
-            </div>
-            <div style={{ backdropFilter: 'blur(12px)', backgroundColor: '#00000066', borderBottomColor: '#FFFFFF1A', borderBottomStyle: 'solid', borderBottomWidth: '1px', borderLeftColor: '#06B6D4', borderLeftStyle: 'solid', borderLeftWidth: '3px', borderRadius: '12px', borderRightColor: '#FFFFFF1A', borderRightStyle: 'solid', borderRightWidth: '1px', borderTopColor: '#FFFFFF1A', borderTopStyle: 'solid', borderTopWidth: '1px', boxShadow: '#06B6D433 0px 0px 15px', boxSizing: 'border-box', marginBottom: '12px', paddingBlock: '12px', paddingInline: '12px' }}>
-              <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineHeight: '18px' }}>
-                  🔗
-                </div>
-                <div style={{ backgroundColor: '#06B6D41A', borderRadius: '6px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px', whiteSpaceCollapse: 'collapse' }}>
-                  <div style={{ boxSizing: 'border-box', color: '#06B6D4', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '10px', fontWeight: 600, lineHeight: '12px', width: 'max-content' }}>
-                    👁 review
-                  </div>
-                </div>
-              </div>
-              <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '13px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '0px' }}>
-                Why "build in public" is dead in 2026.
-              </div>
-            </div>
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Afternoon
-            </div>
-            <div style={{ backdropFilter: 'blur(12px)', backgroundColor: '#00000066', borderBottomColor: '#FFFFFF1A', borderBottomStyle: 'solid', borderBottomWidth: '1px', borderLeftColor: '#10B981', borderLeftStyle: 'solid', borderLeftWidth: '3px', borderRadius: '12px', borderRightColor: '#FFFFFF1A', borderRightStyle: 'solid', borderRightWidth: '1px', borderTopColor: '#FFFFFF1A', borderTopStyle: 'solid', borderTopWidth: '1px', boxShadow: '#10B98133 0px 0px 15px', boxSizing: 'border-box', marginBottom: '12px', paddingBlock: '12px', paddingInline: '12px' }}>
-              <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineHeight: '18px' }}>
-                  🐦
-                </div>
-                <div style={{ backgroundColor: '#10B9811A', borderRadius: '6px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px', whiteSpaceCollapse: 'collapse' }}>
-                  <div style={{ boxSizing: 'border-box', color: '#10B981', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '10px', fontWeight: 600, lineHeight: '12px', width: 'max-content' }}>
-                    ✅ scheduled
-                  </div>
-                </div>
-              </div>
-              <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '13px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '0px' }}>
-                Thread: Re-evaluating product-market fit.
-              </div>
-            </div>
-          </div>
-          <div style={{ boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Evening
-            </div>
-          </div>
-        </div>
-        <div style={{ backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF14', borderRadius: '16px', borderStyle: 'dashed', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', paddingBlock: '12px', paddingInline: '12px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '16px', fontWeight: 700, letterSpacing: '0.1em', lineHeight: '20px', marginBottom: '24px', textAlign: 'center' }}>
-            THU
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Morning
-            </div>
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Afternoon
-            </div>
-            <div style={{ backdropFilter: 'blur(12px)', backgroundColor: '#00000066', borderBottomColor: '#FFFFFF1A', borderBottomStyle: 'solid', borderBottomWidth: '1px', borderLeftColor: '#06B6D4', borderLeftStyle: 'solid', borderLeftWidth: '3px', borderRadius: '12px', borderRightColor: '#FFFFFF1A', borderRightStyle: 'solid', borderRightWidth: '1px', borderTopColor: '#FFFFFF1A', borderTopStyle: 'solid', borderTopWidth: '1px', boxShadow: '#06B6D433 0px 0px 15px', boxSizing: 'border-box', marginBottom: '12px', paddingBlock: '12px', paddingInline: '12px' }}>
-              <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineHeight: '18px' }}>
-                  📝
-                </div>
-                <div style={{ backgroundColor: '#06B6D41A', borderRadius: '6px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px', whiteSpaceCollapse: 'collapse' }}>
-                  <div style={{ boxSizing: 'border-box', color: '#06B6D4', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '10px', fontWeight: 600, lineHeight: '12px', width: 'max-content' }}>
-                    👁 review
-                  </div>
-                </div>
-              </div>
-              <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '13px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '0px' }}>
-                Is Cursor actually better than native IDEs?
-              </div>
-            </div>
-          </div>
-          <div style={{ boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Evening
-            </div>
-          </div>
-        </div>
-        <div style={{ backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF14', borderRadius: '16px', borderStyle: 'dashed', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', paddingBlock: '12px', paddingInline: '12px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '16px', fontWeight: 700, letterSpacing: '0.1em', lineHeight: '20px', marginBottom: '24px', textAlign: 'center' }}>
-            FRI
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Morning
-            </div>
-            <div style={{ backdropFilter: 'blur(12px)', backgroundColor: '#00000066', borderBottomColor: '#FFFFFF1A', borderBottomStyle: 'solid', borderBottomWidth: '1px', borderLeftColor: '#7C3AED', borderLeftStyle: 'solid', borderLeftWidth: '3px', borderRadius: '12px', borderRightColor: '#FFFFFF1A', borderRightStyle: 'solid', borderRightWidth: '1px', borderTopColor: '#FFFFFF1A', borderTopStyle: 'solid', borderTopWidth: '1px', boxShadow: '#7C3AED33 0px 0px 15px', boxSizing: 'border-box', marginBottom: '12px', paddingBlock: '12px', paddingInline: '12px' }}>
-              <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineHeight: '18px' }}>
-                  🔗
-                </div>
-                <div style={{ backgroundColor: '#7C3AED1A', borderRadius: '6px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px', whiteSpaceCollapse: 'collapse' }}>
-                  <div style={{ boxSizing: 'border-box', color: '#7C3AED', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '10px', fontWeight: 600, lineHeight: '12px', width: 'max-content' }}>
-                    ✍️ drafting
-                  </div>
-                </div>
-              </div>
-              <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '13px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '0px' }}>
-                Stop using generic color palettes.
-              </div>
-            </div>
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Afternoon
-            </div>
-          </div>
-          <div style={{ boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Evening
-            </div>
-          </div>
-        </div>
-        <div style={{ backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF14', borderRadius: '16px', borderStyle: 'dashed', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', paddingBlock: '12px', paddingInline: '12px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '16px', fontWeight: 700, letterSpacing: '0.1em', lineHeight: '20px', marginBottom: '24px', opacity: '0.5', textAlign: 'center' }}>
-            SAT
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Morning
-            </div>
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Afternoon
-            </div>
-            <div style={{ backdropFilter: 'blur(12px)', backgroundColor: '#00000066', borderBottomColor: '#FFFFFF1A', borderBottomStyle: 'solid', borderBottomWidth: '1px', borderLeftColor: '#7C3AED', borderLeftStyle: 'solid', borderLeftWidth: '3px', borderRadius: '12px', borderRightColor: '#FFFFFF1A', borderRightStyle: 'solid', borderRightWidth: '1px', borderTopColor: '#FFFFFF1A', borderTopStyle: 'solid', borderTopWidth: '1px', boxShadow: '#7C3AED33 0px 0px 15px', boxSizing: 'border-box', marginBottom: '12px', paddingBlock: '12px', paddingInline: '12px' }}>
-              <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '14px', lineHeight: '18px' }}>
-                  🐦
-                </div>
-                <div style={{ backgroundColor: '#7C3AED1A', borderRadius: '6px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px', whiteSpaceCollapse: 'collapse' }}>
-                  <div style={{ boxSizing: 'border-box', color: '#7C3AED', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '10px', fontWeight: 600, lineHeight: '12px', width: 'max-content' }}>
-                    ✍️ drafting
-                  </div>
-                </div>
-              </div>
-              <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '13px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '0px' }}>
-                Weekend thoughts on deep work.
-              </div>
-            </div>
-          </div>
-          <div style={{ boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Evening
-            </div>
-          </div>
-        </div>
-        <div style={{ backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF14', borderRadius: '16px', borderStyle: 'dashed', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', paddingBlock: '12px', paddingInline: '12px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '16px', fontWeight: 700, letterSpacing: '0.1em', lineHeight: '20px', marginBottom: '24px', opacity: '0.5', textAlign: 'center' }}>
-            SUN
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Morning
-            </div>
-          </div>
-          <div style={{ borderBottomColor: '#FFFFFF0D', borderBottomStyle: 'solid', borderBottomWidth: '1px', boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Afternoon
-            </div>
-          </div>
-          <div style={{ boxSizing: 'border-box', display: 'flex', flexBasis: '0%', flexDirection: 'column', flexGrow: '1', flexShrink: '1', marginBottom: '8px', paddingBottom: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF4D', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '11px', fontWeight: 500, letterSpacing: '0.1em', lineHeight: '14px', marginBottom: '16px', textTransform: 'uppercase' }}>
-              Evening
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+const getStatusColor = (status) => {
+  switch(status) {
+    case 'drafting': return '#F59E0B'; // Amber
+    case 'review': return '#06B6D4'; // Cyan
+    case 'scheduled': return '#10B981'; // Green
+    case 'live': return '#FFFFFF'; // White
+    default: return '#7C3AED';
+  }
+};
+
+const getStatusAnimation = (status) => {
+  switch(status) {
+    case 'drafting': return { boxShadow: ['0 0 0px #F59E0B', '0 0 10px #F59E0B', '0 0 0px #F59E0B'] };
+    case 'review': return { boxShadow: ['0 0 0px #06B6D4', '0 0 10px #06B6D4', '0 0 0px #06B6D4'] };
+    case 'scheduled': return { boxShadow: ['0 0 0px #10B981', '0 0 10px #10B981', '0 0 0px #10B981'] };
+    case 'live': return { backgroundColor: ['rgba(255,255,255,0.1)', 'rgba(255,255,255,0.5)', 'rgba(255,255,255,0.1)'] };
+    default: return {};
+  }
+};
+
+const TimelineCard = ({ title, format, status, delay }) => {
+  const color = getStatusColor(status);
   
-      </motion.div>
-    </div>
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, type: "spring", stiffness: 100, damping: 10 }}
+      style={{
+        backgroundColor: 'rgba(255, 255, 255, 0.03)',
+        border: `1px solid rgba(255, 255, 255, 0.1)`,
+        borderRadius: '12px',
+        padding: '16px',
+        marginBottom: '16px',
+        display: 'flex',
+        flexDirection: 'column'
+      }}
+    >
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', alignItems: 'center' }}>
+        <div style={{ fontSize: '14px' }}>
+          {format === 'Video' ? '🎬' : format === 'Thread' ? '🧵' : '📄'}
+        </div>
+        <motion.div
+          animate={getStatusAnimation(status)}
+          transition={{ duration: status === 'live' ? 4 : 2, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            backgroundColor: `${color}1A`,
+            color: color,
+            padding: '4px 8px',
+            borderRadius: '6px',
+            fontSize: '10px',
+            fontWeight: 600,
+            textTransform: 'uppercase',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '4px'
+          }}
+        >
+          {status === 'scheduled' && '✓'}
+          {status === 'review' && '👁'}
+          {status === 'drafting' && '✍'}
+          {status}
+        </motion.div>
+      </div>
+      <div style={{ color: '#FFF', fontSize: '14px', fontWeight: 600, lineHeight: '1.4' }}>
+        {title}
+      </div>
+    </motion.div>
+  );
+};
+
+const DayColumn = ({ day, delay, slots }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay, duration: 0.5 }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        borderRight: '1px dashed rgba(255, 255, 255, 0.1)',
+        padding: '0 16px',
+        minHeight: '100%'
+      }}
+    >
+      <div style={{ color: 'rgba(255, 255, 255, 0.5)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '32px', textAlign: 'center' }}>
+        {day.toUpperCase()}
+      </div>
+      
+      <div style={{ marginBottom: '24px', flex: 1 }}>
+        <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '10px', fontWeight: 600, marginBottom: '16px', letterSpacing: '0.05em' }}>MORNING</div>
+        {slots.morning.map((c, i) => <TimelineCard key={i} {...c} delay={delay + 0.2 + (i * 0.1)} />)}
+      </div>
+
+      <div style={{ marginBottom: '24px', flex: 1 }}>
+        <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '10px', fontWeight: 600, marginBottom: '16px', letterSpacing: '0.05em' }}>AFTERNOON</div>
+        {slots.afternoon.map((c, i) => <TimelineCard key={i} {...c} delay={delay + 0.4 + (i * 0.1)} />)}
+      </div>
+
+      <div style={{ flex: 1 }}>
+        <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '10px', fontWeight: 600, marginBottom: '16px', letterSpacing: '0.05em' }}>EVENING</div>
+        {slots.evening.map((c, i) => <TimelineCard key={i} {...c} delay={delay + 0.6 + (i * 0.1)} />)}
+      </div>
+
+    </motion.div>
+  );
+}
+
+export default function Timeline() {
+  const schedule = [
+    { day: 'Monday', slots: {
+      morning: [{ title: '3 lessons from 30 days shipping.', format: 'Text', status: 'scheduled' }],
+      afternoon: [{ title: 'Deep dive: The solopreneur thesis.', format: 'Document', status: 'review' }],
+      evening: [{ title: 'Script: Why you should learn React.', format: 'Video', status: 'drafting' }]
+    }},
+    { day: 'Tuesday', slots: {
+      morning: [],
+      afternoon: [{ title: 'Thread: Re-evaluating product-market fit.', format: 'Thread', status: 'scheduled' }],
+      evening: []
+    }},
+    { day: 'Wednesday', slots: {
+      morning: [{ title: 'Live coding session announcement.', format: 'Text', status: 'live' }],
+      afternoon: [{ title: 'Is Cursor actually better than native IDEs?', format: 'Document', status: 'review' }],
+      evening: []
+    }},
+    { day: 'Thursday', slots: {
+      morning: [],
+      afternoon: [],
+      evening: []
+    }},
+    { day: 'Friday', slots: {
+      morning: [],
+      afternoon: [{ title: 'Weekend thoughts on deep work.', format: 'Text', status: 'drafting' }],
+      evening: []
+    }}
+  ];
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -16 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      style={{ width: '100vw', minHeight: '100vh', padding: '60px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}
+    >
+      <div style={{ maxWidth: '1400px', margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', flex: 1 }}>
+        <div style={{ marginBottom: '40px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
+          <div>
+            <h1 style={{ fontSize: '32px', fontWeight: 700, margin: '0 0 8px 0', color: '#FFF' }}>Content Engine</h1>
+            <p style={{ color: 'rgba(255,255,255,0.6)', margin: 0 }}>Auto-generated timeline for items.</p>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ color: '#FFF', fontSize: '14px', fontWeight: 500 }}>Engine Active</div>
+            <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981', boxShadow: '0 0 10px #10B981' }}></div>
+          </div>
+        </div>
+
+        <div style={{ display: 'flex', flex: 1, backgroundColor: 'rgba(255,255,255,0.01)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)', padding: '32px 0' }}>
+          {schedule.map((col, i) => (
+            <DayColumn key={col.day} day={col.day} slots={col.slots} delay={i * 0.06} />
+          ))}
+        </div>
+      </div>
+    </motion.div>
   );
 }

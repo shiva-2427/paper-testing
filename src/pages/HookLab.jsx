@@ -1,198 +1,139 @@
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import useCanvasStore from '../store/canvasStore';
+import { useCounter } from '../hooks/useAnimations';
+
+const HookCard = ({ id, hook, ctr, isWinner, delay, onSelect }) => {
+  const animatedCtr = useCounter(ctr, 1400);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.5, ease: "easeOut" }}
+      onClick={() => onSelect(id)}
+      style={{
+        position: 'relative',
+        backgroundColor: 'rgba(255, 255, 255, 0.05)',
+        border: `1px solid ${isWinner ? '#10B981' : 'rgba(255,255,255,0.1)'}`,
+        borderRadius: '16px',
+        padding: '24px',
+        cursor: 'pointer',
+        backdropFilter: 'blur(12px)',
+        zIndex: isWinner ? 10 : 1
+      }}
+    >
+      {isWinner && (
+        <motion.div 
+          style={{ position: 'absolute', inset: -2, borderRadius: '18px', border: '2px solid rgba(16, 185, 129, 0.5)', zIndex: -1 }}
+          animate={{ boxShadow: ['0 0 0px rgba(16,185,129,0)', '0 0 20px rgba(16,185,129,0.4)', '0 0 0px rgba(16,185,129,0)'] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        />
+      )}
+      
+      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
+        <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.05em' }}>VARIANT {id}</div>
+        <div style={{ color: '#10B981', fontSize: '12px', fontWeight: 700 }}>{animatedCtr.toFixed(1)}% CTR</div>
+      </div>
+      <div style={{ color: '#FFF', fontSize: '16px', fontWeight: 500, lineHeight: '1.5' }}>
+        "{hook}"
+      </div>
+    </motion.div>
+  );
+};
+
+const WinningConnector = ({ winnerId }) => {
+  if (!winnerId) return null;
+
+  // Let's assume standard grid layouts for a simple SVG path. 
+  // In a real app we'd use refs, but here we can visually fake a path winding down to a hypothetical node below.
+  return (
+    <svg style={{ position: 'absolute', width: '100%', height: '200px', bottom: '-200px', left: 0, pointerEvents: 'none' }}>
+      <motion.path
+        d="M 50% 0 C 50% 100px, 50% 100px, 50% 200px" // Very simplified downward line for the visual effect
+        stroke="#10B981"
+        strokeWidth="2"
+        strokeDasharray="8 8"
+        fill="none"
+        initial={{ pathLength: 0 }}
+        animate={{ pathLength: 1 }}
+        transition={{ duration: 1, ease: "easeInOut" }}
+      />
+    </svg>
+  );
+};
 
 export default function HookLab() {
+  const { hookWinner, setHookWinner } = useCanvasStore();
+
+  const hooks = [
+    { id: 'A', hook: 'Why 90% of solo dev projects fail before hitting $1k MRR. A data-driven look.', ctr: 4.2 },
+    { id: 'B', hook: 'The solo dev trap: shipping features instead of finding users.', ctr: 2.8 },
+    { id: 'C', hook: 'Data reveals exactly why your indie hacking project is failing.', ctr: 5.1 },
+    { id: 'D', hook: 'Stop writing code. Start talking to users. Here is the $1k MRR playbook.', ctr: 3.4 },
+    { id: 'E', hook: 'I analyzed 100 failed solo projects. 90% made this exact same mistake.', ctr: 7.6 },
+    { id: 'F', hook: 'Building in public is a meme if you do not understand this one metric.', ctr: 4.9 },
+  ];
+
+  // Auto-select highest CTR as winner after short delay
+  useEffect(() => {
+    if (!hookWinner) {
+      const highest = hooks.reduce((prev, curr) => (prev.ctr > curr.ctr) ? prev : curr);
+      const timer = setTimeout(() => setHookWinner(highest.id), 2500);
+      return () => clearTimeout(timer);
+    }
+  }, [hookWinner, hooks, setHookWinner]);
+
   return (
-    <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.96, filter: 'blur(8px)' }}
-        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-        exit={{ opacity: 0, scale: 1.02, filter: 'blur(4px)' }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        style={{ 
-          transform: 'scale(calc(min(90vh, 100vw) / 1800))', 
-          transformOrigin: 'center center', 
-          width: '1800px', 
-          height: '1800px', 
-          position: 'absolute', 
-          overflow: 'hidden' 
-        }}>
-        
-    <div style={{ width: "100%", height: "100%", backgroundColor: '#0A0A0F', boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
-      <div style={{ boxSizing: 'border-box', display: 'flex', flexDirection: 'column', left: '100px', position: 'absolute', top: '100px' }}>
-        <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex' }}>
-          <div style={{ boxSizing: 'border-box', color: '#06B6D4', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '36px', fontWeight: 700, letterSpacing: '0.05em', lineHeight: '44px', marginRight: '16px' }}>
-            🧪
-          </div>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '36px', fontWeight: 700, letterSpacing: '0.05em', lineHeight: '44px' }}>
-             HOOK LAB
-          </div>
+    <motion.div 
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -16 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      style={{ width: '100vw', minHeight: '100vh', padding: '60px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column' }}
+    >
+      <div style={{ maxWidth: '1000px', margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', flex: 1, position: 'relative' }}>
+        <div style={{ marginBottom: '40px' }}>
+          <h1 style={{ fontSize: '32px', fontWeight: 700, margin: '0 0 8px 0', color: '#FFF' }}>Hook Lab</h1>
+          <p style={{ color: 'rgba(255,255,255,0.6)', margin: 0 }}>Predictive CTR analysis of generated angles.</p>
         </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF80', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '16px', lineHeight: '20px', marginTop: '8px' }}>
-          A/B test the first 150 characters to maximize retention.
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '24px', position: 'relative' }}>
+          {hooks.map((h, i) => (
+            <HookCard 
+              key={h.id} 
+              id={h.id} 
+              hook={h.hook} 
+              ctr={h.ctr} 
+              isWinner={hookWinner === h.id} 
+              delay={0.1 * i} 
+              onSelect={setHookWinner}
+            />
+          ))}
+          <WinningConnector winnerId={hookWinner} />
         </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '100px' }}>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: hookWinner ? 1 : 0 }}
+            transition={{ duration: 0.5 }}
+            style={{
+              padding: '20px 40px',
+              borderRadius: '32px',
+              backgroundColor: 'rgba(16, 185, 129, 0.1)',
+              border: '1px solid rgba(16, 185, 129, 0.3)',
+              color: '#10B981',
+              fontSize: '16px',
+              fontWeight: 700,
+              letterSpacing: '0.1em'
+            }}
+          >
+            WINNING HOOK SELECTED
+          </motion.div>
+        </div>
+
       </div>
-      <div style={{ backdropFilter: 'blur(40px)', backgroundImage: 'linear-gradient(in oklab 180deg, oklab(54.1% 0.096 -0.227 / 10%) 0%, oklab(71.5% -0.103 -0.073 / 5%) 100%)', backgroundOrigin: 'border-box', borderColor: '#7C3AED66', borderRadius: '24px', borderStyle: 'solid', borderWidth: '2px', boxShadow: '#FFFFFF0D 0px 0px 30px inset, #7C3AED26 0px 0px 50px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', height: '400px', justifyContent: 'center', left: '1150px', paddingBlock: '40px', paddingInline: '40px', position: 'absolute', top: '550px', width: '500px' }}>
-        <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '24px' }}>
-          <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex' }}>
-            <div style={{ boxSizing: 'border-box', color: '#000000', display: 'inline-block', fontFamily: 'system-ui, sans-serif', fontSize: '32px', lineHeight: '40px', marginRight: '12px' }}>
-              🏆
-            </div>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '20px', fontWeight: 700, letterSpacing: '0.1em', lineHeight: '24px' }}>
-              WINNING HOOK
-            </div>
-          </div>
-          <div style={{ backgroundColor: '#10B98133', borderColor: '#10B98166', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', paddingBlock: '6px', paddingInline: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#10B981', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 700, lineHeight: '18px' }}>
-              98% PREDICTED CTR
-            </div>
-          </div>
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '24px', fontWeight: 600, lineHeight: 'round(up, 140%, 1px)', marginBottom: '32px', textShadow: '#FFFFFF33 0px 0px 20px' }}>
-          Stop using generic color palettes. Instead, try this 3-step HSL framework to create colors that actually look professional.
-        </div>
-        <div style={{ boxSizing: 'border-box', display: 'flex', gap: '16px' }}>
-          <div style={{ backgroundColor: '#00000066', borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', flexBasis: '0%', flexGrow: '1', flexShrink: '1', paddingBlock: '16px', paddingInline: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '24px', fontWeight: 700, lineHeight: '30px', marginBottom: '4px', textAlign: 'center' }}>
-              4.2s
-            </div>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '12px', fontWeight: 500, lineHeight: '16px', textAlign: 'center', textTransform: 'uppercase' }}>
-              Avg Read Time
-            </div>
-          </div>
-          <div style={{ backgroundColor: '#00000066', borderColor: '#FFFFFF1A', borderRadius: '12px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', flexBasis: '0%', flexGrow: '1', flexShrink: '1', paddingBlock: '16px', paddingInline: '16px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '24px', fontWeight: 700, lineHeight: '30px', marginBottom: '4px', textAlign: 'center' }}>
-              High
-            </div>
-            <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '12px', fontWeight: 500, lineHeight: '16px', textAlign: 'center', textTransform: 'uppercase' }}>
-              Curiosity Gap
-            </div>
-          </div>
-        </div>
-      </div>
-      <div style={{ alignItems: 'center', backdropFilter: 'blur(40px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF26', borderRadius: '32px', borderStyle: 'solid', borderWidth: '1px', boxShadow: '#00000080 0px 10px 40px', boxSizing: 'border-box', display: 'flex', height: '64px', justifyContent: 'space-evenly', left: '550px', paddingInline: '12px', position: 'absolute', top: '1680px', width: '700px', display: 'none' }}>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Engine
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Vault
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Mirror
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Timeline
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#7C3AED', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 600, lineHeight: '18px', textShadow: '#7C3AEDCC 0px 0px 15px' }}>
-          Hook Lab
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 500, lineHeight: '18px' }}>
-          Pulse
-        </div>
-      </div>
-      <div style={{ backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF1A', borderRadius: '16px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', height: '260px', left: '150px', paddingBlock: '24px', paddingInline: '24px', position: 'absolute', top: '250px', width: '400px' }}>
-        <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 700, lineHeight: '18px' }}>
-            VARIANT A (Direct)
-          </div>
-          <div style={{ backgroundColor: '#F59E0B1A', borderRadius: '8px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#F59E0B', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '12px', fontWeight: 600, lineHeight: '16px' }}>
-              68% CTR
-            </div>
-          </div>
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFFCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '18px', lineHeight: 'round(up, 150%, 1px)', marginBottom: 'auto' }}>
-          Here is the 3-step HSL framework I use to create beautiful, professional color palettes.
-        </div>
-      </div>
-      <div style={{ backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF1A', borderRadius: '16px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', height: '260px', left: '150px', paddingBlock: '24px', paddingInline: '24px', position: 'absolute', top: '580px', width: '400px' }}>
-        <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 700, lineHeight: '18px' }}>
-            VARIANT B (Question)
-          </div>
-          <div style={{ backgroundColor: '#F59E0B1A', borderRadius: '8px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#F59E0B', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '12px', fontWeight: 600, lineHeight: '16px' }}>
-              54% CTR
-            </div>
-          </div>
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFFCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '18px', lineHeight: 'round(up, 150%, 1px)', marginBottom: 'auto' }}>
-          Are you still using generic color palettes? Here is how to upgrade your design immediately.
-        </div>
-      </div>
-      <div style={{ backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#10B981', borderRadius: '16px', borderStyle: 'solid', borderWidth: '2px', boxShadow: '#10B9811A 0px 0px 20px inset, #10B98133 0px 0px 30px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', height: '260px', left: '150px', paddingBlock: '24px', paddingInline: '24px', position: 'absolute', top: '910px', width: '400px' }}>
-        <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 700, lineHeight: '18px' }}>
-            VARIANT C (Negative)
-          </div>
-          <div style={{ backgroundColor: '#10B9811A', borderRadius: '8px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#10B981', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '12px', fontWeight: 600, lineHeight: '16px' }}>
-              98% CTR 🏆
-            </div>
-          </div>
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFF', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '18px', fontWeight: 600, lineHeight: 'round(up, 150%, 1px)', marginBottom: 'auto' }}>
-          Stop using generic color palettes. Instead, try this 3-step HSL framework to create colors that actually look professional.
-        </div>
-      </div>
-      <div style={{ backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF1A', borderRadius: '16px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', height: '260px', left: '630px', paddingBlock: '24px', paddingInline: '24px', position: 'absolute', top: '250px', width: '400px' }}>
-        <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 700, lineHeight: '18px' }}>
-            VARIANT D (Data)
-          </div>
-          <div style={{ backgroundColor: '#F59E0B1A', borderRadius: '8px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#F59E0B', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '12px', fontWeight: 600, lineHeight: '16px' }}>
-              71% CTR
-            </div>
-          </div>
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFFCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '18px', lineHeight: 'round(up, 150%, 1px)', marginBottom: 'auto' }}>
-          90% of SaaS websites use the same 3 colors. Here is a framework to stand out.
-        </div>
-      </div>
-      <div style={{ backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF1A', borderRadius: '16px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', height: '260px', left: '630px', paddingBlock: '24px', paddingInline: '24px', position: 'absolute', top: '580px', width: '400px' }}>
-        <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 700, lineHeight: '18px' }}>
-            VARIANT E (Story)
-          </div>
-          <div style={{ backgroundColor: '#EF44441A', borderRadius: '8px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#EF4444', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '12px', fontWeight: 600, lineHeight: '16px' }}>
-              22% CTR
-            </div>
-          </div>
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFFCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '18px', lineHeight: 'round(up, 150%, 1px)', marginBottom: 'auto' }}>
-          I spent 5 hours picking colors for my project yesterday, but then I discovered this.
-        </div>
-      </div>
-      <div style={{ backdropFilter: 'blur(24px)', backgroundColor: '#FFFFFF05', borderColor: '#FFFFFF1A', borderRadius: '16px', borderStyle: 'solid', borderWidth: '1px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', height: '260px', left: '630px', paddingBlock: '24px', paddingInline: '24px', position: 'absolute', top: '910px', width: '400px' }}>
-        <div style={{ alignItems: 'center', boxSizing: 'border-box', display: 'flex', justifyContent: 'space-between', marginBottom: '16px' }}>
-          <div style={{ boxSizing: 'border-box', color: '#FFFFFF66', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '14px', fontWeight: 700, lineHeight: '18px' }}>
-            VARIANT F (Listicle)
-          </div>
-          <div style={{ backgroundColor: '#F59E0B1A', borderRadius: '8px', boxSizing: 'border-box', display: 'inline-block', paddingBlock: '4px', paddingInline: '8px' }}>
-            <div style={{ boxSizing: 'border-box', color: '#F59E0B', display: 'inline-block', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '12px', fontWeight: 600, lineHeight: '16px' }}>
-              45% CTR
-            </div>
-          </div>
-        </div>
-        <div style={{ boxSizing: 'border-box', color: '#FFFFFFCC', fontFamily: '"Inter", system-ui, sans-serif', fontSize: '18px', lineHeight: 'round(up, 150%, 1px)', marginBottom: 'auto' }}>
-          3 reasons your colors look amateur (and 1 framework to fix them today).
-        </div>
-      </div>
-      <div style={{ boxSizing: 'border-box', height: '1800px', left: '0px', position: 'absolute', top: '0px', width: '1800px' }}>
-        <svg xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
-          <defs><linearGradient id="_mlvljx0" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(124, 58, 237, 0.2)"/><stop offset="100%" stop-color="rgba(6, 182, 212, 0.2)"/></linearGradient><linearGradient id="_mlvljx1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(16, 185, 129, 0.4)"/><stop offset="100%" stop-color="rgba(16, 185, 129, 1)"/></linearGradient><filter id="_mlvljx2"><feGaussianBlur stdDeviation="4" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-          <path d="M 550 380 Q 800 380 1150 650" stroke="url(#_mlvljx0)" strokeWidth="2" fill="none" strokeDasharray="8,8" />
-          <path d="M 550 710 Q 800 710 1150 700" stroke="url(#_mlvljx0)" strokeWidth="2" fill="none" strokeDasharray="8,8" />
-          <path d="M 1030 380 Q 1100 380 1150 600" stroke="url(#_mlvljx0)" strokeWidth="2" fill="none" strokeDasharray="8,8" />
-          <path d="M 1030 710 L 1150 710" stroke="url(#_mlvljx0)" strokeWidth="2" fill="none" strokeDasharray="8,8" />
-          <path d="M 1030 1040 Q 1100 1040 1150 800" stroke="url(#_mlvljx0)" strokeWidth="2" fill="none" strokeDasharray="8,8" />
-          <path d="M 550 1040 Q 850 1040 1150 750" stroke="url(#_mlvljx1)" strokeWidth="4" fill="none" filter="url(#_mlvljx2)" />
-        </svg>
-      </div>
-    </div>
-  
-      </motion.div>
-    </div>
+    </motion.div>
   );
 }

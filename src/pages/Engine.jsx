@@ -132,26 +132,31 @@ export default function Engine() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4 }}
-      className="min-h-screen w-full flex flex-col items-center justify-start overflow-hidden pt-20"
+      className="min-h-screen w-full flex flex-col items-center justify-start overflow-y-auto pt-20 pb-40"
     >
       <div className="flex flex-col items-center text-center gap-2 mb-4 w-full px-6 z-30">
         <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Engine</h1>
         <p className="text-lg text-zinc-400">Distribute raw input signal to parallel agents.</p>
       </div>
 
-      <div className="flex-1 w-full max-w-6xl relative flex items-center justify-center min-h-[500px]">
+      <div className="flex-1 w-full max-w-6xl relative flex items-center justify-center min-h-[600px] my-10">
         
         <ConnectionLines trigger={agentStatus !== 'idle'} />
 
         <motion.div
-          initial={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
-          animate={agentStatus === 'thinking' ? {
-            scale: 1, opacity: 1, x: "-50%", y: "-50%", boxShadow: ['0 0 20px rgba(245,158,11,0.2)', '0 0 50px rgba(245,158,11,0.4)', '0 0 20px rgba(245,158,11,0.2)']
-          } : { scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
-          transition={agentStatus === 'thinking' ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.6, ease: "easeOut" }}
-          className="w-[320px] h-[220px] sm:w-[400px] sm:h-[240px] absolute z-30 flex flex-col p-8 rounded-3xl border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden"
-          style={{ left: '50%', top: '50%' }}
+           animate={{ y: [0, -12, 0] }}
+           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+           className="absolute z-30 pointer-events-none"
+           style={{ left: '50%', top: '50%', x: "-50%", y: "-50%" }}
         >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={agentStatus === 'thinking' ? {
+              scale: 1, opacity: 1, boxShadow: ['0 0 20px rgba(245,158,11,0.2)', '0 0 50px rgba(245,158,11,0.4)', '0 0 20px rgba(245,158,11,0.2)']
+            } : { scale: 1, opacity: 1 }}
+            transition={agentStatus === 'thinking' ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.6, ease: "easeOut" }}
+            className="w-[320px] h-[220px] sm:w-[400px] sm:h-[240px] flex flex-col p-8 rounded-3xl border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden pointer-events-auto"
+          >
           {/* Glass background layer */}
           <div className="absolute inset-0 bg-zinc-900/70 backdrop-blur-2xl -z-20"></div>
           
@@ -186,6 +191,7 @@ export default function Engine() {
               Agents are thinking...
             </div>
           )}
+          </motion.div>
         </motion.div>
 
         <NodeCard platform="LinkedIn" delay={0.15} color="#60A5FA" pos={{ left: '20%', top: '50%' }} status={agentStatus === 'idle' ? 'STANDBY' : (agentStatus === 'thinking' ? 'generating...' : 'READY')} title={getContent('LinkedIn')} isVisible={agentStatus !== 'idle'} />

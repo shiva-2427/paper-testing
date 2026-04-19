@@ -1,15 +1,21 @@
+import { motion } from 'framer-motion';
+
 export default function Vault() {
   return (
     <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-      {/* We strictly use CSS calculation for scale to perfectly fit any laptop or monitor screen without scrolling */}
-      <div style={{ 
-        transform: 'scale(calc(min(90vh, 100vw) / 1800))', 
-        transformOrigin: 'center center', 
-        width: '1800px', 
-        height: '1800px', 
-        position: 'absolute', 
-        overflow: 'hidden' 
-      }}>
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.96, filter: 'blur(8px)' }}
+        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+        exit={{ opacity: 0, scale: 1.02, filter: 'blur(4px)' }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        style={{ 
+          transform: 'scale(calc(min(90vh, 100vw) / 1800))', 
+          transformOrigin: 'center center', 
+          width: '1800px', 
+          height: '1800px', 
+          position: 'absolute', 
+          overflow: 'hidden' 
+        }}>
         
     <div style={{ width: "100%", height: "100%", backgroundColor: '#0A0A0F', boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', height: '1800px', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased', width: '1800px' }}>
       <div style={{ backgroundImage: 'radial-gradient(circle farthest-corner at 50% 0% in oklab, oklab(54.1% 0.096 -0.227 / 20%) 0%, oklab(71.5% -0.103 -0.073 / 10%) 50%, oklab(0% -.0001 -.0001 / 0%) 100%)', boxSizing: 'border-box', height: '800px', left: '400px', position: 'absolute', top: '0px', width: '1000px' }} />
@@ -204,7 +210,7 @@ export default function Vault() {
       </div>
     </div>
   
-      </div>
+      </motion.div>
     </div>
   );
 }

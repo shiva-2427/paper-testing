@@ -1,15 +1,21 @@
+import { motion } from 'framer-motion';
+
 export default function Pulse() {
   return (
     <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-      {/* We strictly use CSS calculation for scale to perfectly fit any laptop or monitor screen without scrolling */}
-      <div style={{ 
-        transform: 'scale(calc(min(90vh, 100vw) / 1800))', 
-        transformOrigin: 'center center', 
-        width: '1800px', 
-        height: '1800px', 
-        position: 'absolute', 
-        overflow: 'hidden' 
-      }}>
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.96, filter: 'blur(8px)' }}
+        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+        exit={{ opacity: 0, scale: 1.02, filter: 'blur(4px)' }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        style={{ 
+          transform: 'scale(calc(min(90vh, 100vw) / 1800))', 
+          transformOrigin: 'center center', 
+          width: '1800px', 
+          height: '1800px', 
+          position: 'absolute', 
+          overflow: 'hidden' 
+        }}>
         
     <div style={{ width: "100%", height: "100%", backgroundColor: '#0A0A0F', boxSizing: 'border-box', fontSize: '12px', fontSynthesis: 'none', lineHeight: '16px', MozOsxFontSmoothing: 'grayscale', overflow: 'clip', position: 'relative', WebkitFontSmoothing: 'antialiased' }}>
       <div style={{ boxSizing: 'border-box', display: 'flex', gap: '24px', justifyContent: 'space-between', left: '100px', position: 'absolute', top: '220px', width: '1600px' }}>
@@ -198,7 +204,7 @@ export default function Pulse() {
       </div>
     </div>
   
-      </div>
+      </motion.div>
     </div>
   );
 }

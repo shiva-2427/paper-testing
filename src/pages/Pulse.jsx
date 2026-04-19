@@ -6,21 +6,11 @@ const AnimatedMetric = ({ label, value, prefix = "", suffix = "" }) => {
   const animatedValue = useCounter(value, 1200);
   
   return (
-    <div style={{
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-      borderRadius: '24px',
-      border: '1px solid rgba(255, 255, 255, 0.1)',
-      padding: '24px',
-      display: 'flex',
-      flexDirection: 'column',
-      flex: 1,
-      minWidth: 0,
-      backdropFilter: 'blur(24px)'
-    }}>
-      <div style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '14px', fontWeight: 600, letterSpacing: '0.1em', marginBottom: '8px' }}>
+    <div className="rounded-2xl bg-zinc-900/60 border border-white/10 p-6 w-full flex flex-col justify-center text-center items-center backdrop-blur-md">
+      <div className="text-white/60 text-sm font-semibold tracking-widest mb-2 uppercase">
         {label}
       </div>
-      <div style={{ color: '#fff', fontSize: '36px', fontWeight: 700, fontFamily: 'system-ui, sans-serif' }}>
+      <div className="text-white text-4xl font-bold font-sans">
         {prefix}{animatedValue}{suffix}
       </div>
     </div>
@@ -30,26 +20,21 @@ const AnimatedMetric = ({ label, value, prefix = "", suffix = "" }) => {
 const PostCard = ({ title, platform, views, likes, comment, delay, isPositive }) => {
   return (
     <motion.div
-      initial={{ x: isPositive ? -50 : 50, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ delay, duration: 0.5, ease: "easeOut" }}
-      style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
-        border: `1px solid ${isPositive ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
-        borderRadius: '12px',
-        padding: '20px',
-        width: '100%'
-      }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay, duration: 0.3, ease: "easeOut" }}
+      whileHover={{ scale: 1.02, boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)' }}
+      className={`rounded-2xl bg-zinc-900/60 p-6 w-full cursor-pointer transition-all border ${isPositive ? 'border-emerald-500/20 hover:border-emerald-500/40' : 'border-red-500/20 hover:border-red-500/40'}`}
     >
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '12px', alignItems: 'flex-start' }}>
-        <div style={{ color: '#fff', fontSize: '14px', fontWeight: 600, lineHeight: '18px', paddingRight: '12px' }}>
+      <div className="flex justify-between items-start mb-4">
+        <div className="text-white text-lg font-semibold leading-snug pr-4">
           {title}
         </div>
-        <div style={{ backgroundColor: 'rgba(6, 182, 212, 0.1)', color: '#06B6D4', padding: '4px 8px', borderRadius: '6px', fontSize: '11px', fontWeight: 600 }}>
+        <div className="bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap">
           {platform}
         </div>
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'rgba(255,255,255,0.5)' }}>
+      <div className="flex gap-6 text-sm text-white/50 font-medium">
         <span>Views: {views}k</span>
         <span>Likes: {likes}</span>
         <span>Comments: {comment}</span>
@@ -68,58 +53,50 @@ export default function Pulse() {
 
   return (
     <motion.div 
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -16 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      style={{ width: '100vw', minHeight: '100vh', display: 'flex', justifyContent: 'center', boxSizing: 'border-box' }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4 }}
+      className="min-h-screen w-full flex flex-col items-center justify-start overflow-y-auto pb-32 pt-20"
     >
-      <div style={{ width: '100%', maxWidth: '1400px', display: 'flex', flexDirection: 'column', padding: '60px 40px', paddingBottom: '120px' }}>
+      <div className="max-w-6xl w-full mx-auto px-6 py-10 flex flex-col items-center gap-10">
         
+        {/* Header Section */}
+        <div className="flex flex-col items-center text-center gap-2 mb-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white tracking-tight">Pulse</h1>
+          <p className="text-lg text-zinc-400">Real-time performance analytics and agent insights.</p>
+        </div>
+
         {/* Top Metric Strip */}
-        <div style={{ display: 'flex', gap: '24px', width: '100%', marginBottom: '40px' }}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 w-full">
           <AnimatedMetric label="TOTAL IMPRESSIONS" value={kViews} suffix="k" />
           <AnimatedMetric label="ENGAGEMENT RATE" value={metrics?.ctr || 4} suffix="%" />
           <AnimatedMetric label="NEW FOLLOWERS" value={metrics?.likes || 1204} />
           <AnimatedMetric label="PROFILE CLICKS" value={metrics?.comments || 243} />
         </div>
 
-        {/* CSS Grid for Columns */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '40px', flex: 1, marginBottom: '40px' }}>
+        {/* Content Structure */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 w-full mt-4">
           
           {/* Left Column (Working) */}
-          <div style={{
-            backgroundColor: 'rgba(16, 185, 129, 0.05)',
-            border: '1px solid rgba(16, 185, 129, 0.2)',
-            borderRadius: '20px',
-            padding: '32px',
-            display: 'flex',
-            flexDirection: 'column'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
-              <div style={{ fontSize: '24px', marginRight: '12px' }}>dY S</div>
-              <div style={{ color: '#10B981', fontSize: '18px', fontWeight: 700, letterSpacing: '0.1em' }}>GROWTH STACK</div>
+          <div className="flex flex-col items-center w-full">
+            <div className="flex items-center gap-3 mb-6 w-full">
+              <span className="text-2xl text-emerald-500">📈</span>
+              <h2 className="text-emerald-500 text-xl font-bold tracking-widest uppercase">Growth Stack</h2>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div className="flex flex-col gap-6 w-full">
               <PostCard isPositive={true} delay={0.1} title="A deep dive into AI agent economies vs SaaS." platform="LinkedIn" views="142" likes="1.2k" comment="243" />
               <PostCard isPositive={true} delay={0.2} title="Is cursor actually better than native IDEs?" platform="Twitter" views="88" likes="940" comment="112" />
             </div>
           </div>
 
           {/* Right Column (Not Working) */}
-          <div style={{
-            backgroundColor: 'rgba(239, 68, 68, 0.05)',
-            border: '1px solid rgba(239, 68, 68, 0.2)',
-            borderRadius: '20px',
-            padding: '32px',
-            display: 'flex',
-            flexDirection: 'column'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', marginBottom: '24px' }}>
-              <div style={{ fontSize: '24px', marginRight: '12px' }}>dY S</div>
-              <div style={{ color: '#EF4444', fontSize: '18px', fontWeight: 700, letterSpacing: '0.1em' }}>MUTED STACK</div>
+          <div className="flex flex-col items-center w-full">
+            <div className="flex items-center gap-3 mb-6 w-full">
+              <span className="text-2xl text-red-500">📉</span>
+              <h2 className="text-red-500 text-xl font-bold tracking-widest uppercase">Muted Stack</h2>
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div className="flex flex-col gap-6 w-full">
               <PostCard isPositive={false} delay={0.3} title="My thoughts on standard color palettes." platform="Blog" views="4" likes="12" comment="0" />
             </div>
           </div>
@@ -127,24 +104,20 @@ export default function Pulse() {
         </div>
 
         {/* Agent Insight Bottom */}
-        <div style={{
-          position: 'relative',
-          padding: '40px',
-          borderRadius: '24px',
-          backgroundColor: 'rgba(255, 255, 255, 0.03)',
-          border: '1px solid rgba(124, 58, 237, 0.4)',
-          boxShadow: 'inset 0 0 30px rgba(255,255,255,0.05), 0 0 50px rgba(124, 58, 237, 0.1)',
-          display: 'flex',
-          alignItems: 'center'
-        }}>
-          <div style={{ fontSize: '48px', marginRight: '40px' }}>🤖</div>
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ color: '#7C3AED', fontSize: '14px', fontWeight: 700, letterSpacing: '0.1em', marginBottom: '8px' }}>AGENT INSIGHT</div>
-            <div style={{ color: '#FFF', fontSize: '24px', fontWeight: 600, lineHeight: '140%', minHeight: '68px' }}>
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="relative mt-8 p-8 md:p-10 rounded-2xl bg-zinc-900/60 border border-violet-500/30 w-full flex flex-col md:flex-row items-center md:items-start gap-8 shadow-[0_0_40px_-10px_rgba(139,92,246,0.15)]"
+        >
+          <div className="text-5xl shrink-0 drop-shadow-[0_0_15px_rgba(139,92,246,0.5)]">🤖</div>
+          <div className="flex flex-col w-full text-center md:text-left gap-2">
+            <div className="text-violet-400 text-sm font-bold tracking-widest uppercase">AGENT INSIGHT</div>
+            <div className="text-white text-xl md:text-2xl font-medium leading-relaxed min-h-[80px]">
               {typedInsight}
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </motion.div>

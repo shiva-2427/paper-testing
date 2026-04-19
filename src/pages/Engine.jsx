@@ -66,6 +66,45 @@ const ConnectionLines = ({ trigger }) => {
   );
 };
 
+const OceanBackground = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden rounded-3xl -z-10 bg-gradient-to-b from-transparent to-blue-950/20 opacity-60">
+      {/* Deepest slow wave */}
+      <motion.svg 
+        className="absolute bottom-0 w-[200%] h-[60%]"
+        animate={{ x: ['0%', '-50%'] }} 
+        transition={{ duration: 25, repeat: Infinity, ease: 'linear' }} 
+        viewBox="0 0 2400 120" preserveAspectRatio="none"
+      >
+        <path d="M0,60 C300,120 300,0 600,60 C900,120 900,0 1200,60 L1200,120 L0,120 Z" fill="rgba(59, 130, 246, 0.15)"/>
+        <path d="M1200,60 C1500,120 1500,0 1800,60 C2100,120 2100,0 2400,60 L2400,120 L1200,120 Z" fill="rgba(59, 130, 246, 0.15)"/>
+      </motion.svg>
+
+      {/* Mid cyan wave */}
+      <motion.svg 
+        className="absolute bottom-0 w-[200%] h-[50%]"
+        animate={{ x: ['-50%', '0%'] }} 
+        transition={{ duration: 18, repeat: Infinity, ease: 'linear' }} 
+        viewBox="0 0 2400 120" preserveAspectRatio="none"
+      >
+        <path d="M0,60 C300,0 300,120 600,60 C900,0 900,120 1200,60 L1200,120 L0,120 Z" fill="rgba(6, 182, 212, 0.2)"/>
+        <path d="M1200,60 C1500,0 1500,120 1800,60 C2100,0 2100,120 2400,60 L2400,120 L1200,120 Z" fill="rgba(6, 182, 212, 0.2)"/>
+      </motion.svg>
+
+      {/* Front fast pulse wave */}
+      <motion.svg 
+        className="absolute -bottom-4 w-[200%] h-[45%]"
+        animate={{ x: ['0%', '-50%'] }} 
+        transition={{ duration: 12, repeat: Infinity, ease: 'linear' }} 
+        viewBox="0 0 2400 120" preserveAspectRatio="none"
+      >
+        <path d="M0,60 C300,90 300,30 600,60 C900,90 900,30 1200,60 L1200,120 L0,120 Z" fill="rgba(124, 58, 237, 0.15)"/>
+        <path d="M1200,60 C1500,90 1500,30 1800,60 C2100,90 2100,30 2400,60 L2400,120 L1200,120 Z" fill="rgba(124, 58, 237, 0.15)"/>
+      </motion.svg>
+    </div>
+  );
+};
+
 export default function Engine() {
   const { rawIdea, setRawIdea, agentStatus, triggerAgents } = useCanvasStore();
 
@@ -110,10 +149,14 @@ export default function Engine() {
             scale: 1, opacity: 1, x: "-50%", y: "-50%", boxShadow: ['0 0 20px rgba(245,158,11,0.2)', '0 0 50px rgba(245,158,11,0.4)', '0 0 20px rgba(245,158,11,0.2)']
           } : { scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
           transition={agentStatus === 'thinking' ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.6, ease: "easeOut" }}
-          className="w-[320px] h-[220px] sm:w-[400px] sm:h-[240px] absolute z-30 flex flex-col p-8 rounded-3xl border border-white/20 bg-gradient-to-br from-amber-500/10 to-violet-500/10 backdrop-blur-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)]"
+          className="w-[320px] h-[220px] sm:w-[400px] sm:h-[240px] absolute z-30 flex flex-col p-8 rounded-3xl border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden"
           style={{ left: '50%', top: '50%' }}
         >
-          <div className="text-amber-500 text-xs sm:text-sm font-bold tracking-widest uppercase mb-4 flex items-center justify-between">
+          {/* Glass background layer */}
+          <div className="absolute inset-0 bg-zinc-900/70 backdrop-blur-2xl -z-20"></div>
+          
+          <OceanBackground />
+          <div className="text-amber-500 text-xs sm:text-sm font-bold tracking-widest uppercase mb-4 flex items-center justify-between relative z-10">
             <div className="flex items-center gap-2">
               <span className="animate-pulse">🎯</span> RAW IDEA
             </div>
@@ -131,15 +174,15 @@ export default function Engine() {
             value={rawIdea}
             onChange={(e) => setRawIdea(e.target.value)}
             onKeyDown={handleKeyDown}
-            className="flex-1 bg-transparent border-none outline-none text-white text-xl sm:text-2xl font-medium resize-none placeholder:text-white/20"
+            className="flex-1 bg-transparent border-none outline-none text-white text-xl sm:text-2xl font-medium resize-none placeholder:text-white/20 relative z-10"
           />
           {agentStatus === 'idle' && (
-            <div className="text-white/30 text-xs font-bold uppercase tracking-widest mt-4 flex items-center gap-2">
+            <div className="text-white/30 text-xs font-bold uppercase tracking-widest mt-4 flex items-center gap-2 relative z-10">
               <span className="text-white/50 border border-white/20 px-1.5 rounded text-[10px]">↵</span> to run engine
             </div>
           )}
           {agentStatus === 'thinking' && (
-            <div className="text-amber-500 text-xs font-bold uppercase tracking-widest animate-pulse mt-4">
+            <div className="text-amber-500 text-xs font-bold uppercase tracking-widest animate-pulse mt-4 relative z-10">
               Agents are thinking...
             </div>
           )}

@@ -143,20 +143,24 @@ export default function Engine() {
         
         <ConnectionLines trigger={agentStatus !== 'idle'} />
 
-        <motion.div
-           animate={{ y: [0, -12, 0] }}
-           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-           className="absolute z-30 pointer-events-none"
-           style={{ left: '50%', top: '50%', x: "-50%", y: "-50%" }}
+        {/* Structural Centering Wrapper */}
+        <div 
+          className="absolute z-30 pointer-events-none"
+          style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
         >
+          {/* Floating Animation Wrapper */}
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={agentStatus === 'thinking' ? {
-              scale: 1, opacity: 1, boxShadow: ['0 0 20px rgba(245,158,11,0.2)', '0 0 50px rgba(245,158,11,0.4)', '0 0 20px rgba(245,158,11,0.2)']
-            } : { scale: 1, opacity: 1 }}
-            transition={agentStatus === 'thinking' ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.6, ease: "easeOut" }}
-            className="w-[320px] h-[220px] sm:w-[400px] sm:h-[240px] flex flex-col p-8 rounded-3xl border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden pointer-events-auto"
+             animate={{ y: [0, -12, 0] }}
+             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={agentStatus === 'thinking' ? {
+                scale: 1, opacity: 1, boxShadow: ['0 0 20px rgba(245,158,11,0.2)', '0 0 50px rgba(245,158,11,0.4)', '0 0 20px rgba(245,158,11,0.2)']
+              } : { scale: 1, opacity: 1 }}
+              transition={agentStatus === 'thinking' ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.6, ease: "easeOut" }}
+              className="w-[320px] h-[220px] sm:w-[400px] sm:h-[240px] flex flex-col p-8 rounded-3xl border border-white/20 shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden pointer-events-auto bg-zinc-900/60"
+            >
           {/* Glass background layer */}
           <div className="absolute inset-0 bg-zinc-900/70 backdrop-blur-2xl -z-20"></div>
           

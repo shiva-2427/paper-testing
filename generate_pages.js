@@ -38,30 +38,32 @@ for (const [name, fp] of Object.entries(logPaths)) {
   jsxMarkup = jsxMarkup.replace('<div style={{', '<div style={{ width: "100%", height: "100%",');
   
   // HIDE the duplicate mockup navigation from the JSON so only the global one in App.jsx shows!
+  // We match the 'top: '1680px'' or similar properties of the navigation wrapper.
   jsxMarkup = jsxMarkup.replace(/top: '1680px', width: '700px' \}/g, "top: '1680px', width: '700px', display: 'none' }");
+  // Also catch variations without quotes if they exist
   jsxMarkup = jsxMarkup.replace(/top: 1680, width: '700px'/g, "top: 1680, width: '700px', display: 'none'");
   
   const component = `
-import { motion } from 'framer-motion';
+import '../index.css';
 
 export default function ${name}() {
   return (
-    <div style={{ width: '100vw', height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.96, filter: 'blur(8px)' }}
-        animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-        exit={{ opacity: 0, scale: 1.02, filter: 'blur(4px)' }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+    <div style={{ width: '100vw', height: '100vh', display: 'flex', overflow: 'hidden', backgroundColor: '#0A0A0F', position: 'relative' }}>
+      {/* We use strict absolute centering coords to guarantee the 1800x1800 UI fits any screen size flawlessly */}
+      <div 
+        className="page-enter"
         style={{ 
-          transform: 'scale(calc(min(90vh, 100vw) / 1800))', 
-          transformOrigin: 'center center', 
+          position: 'absolute', 
+          top: '50%',
+          left: '50%',
           width: '1800px', 
           height: '1800px', 
-          position: 'absolute', 
+          transform: 'translate(-50%, -50%) scale(calc(min(95vh, 100vw) / 1800))', 
           overflow: 'hidden' 
-        }}>
+        }}
+      >
         ${jsxMarkup}
-      </motion.div>
+      </div>
     </div>
   );
 }
@@ -69,4 +71,4 @@ export default function ${name}() {
   fs.writeFileSync(path.join(pagesDir, name + '.jsx'), component.trim());
 }
 
-console.log('Regenerated pages with viewport-adaptive scaling, animations, and hidden duplicate navbars.');
+console.log('Regenerated pages with viewport-adaptive scaling and hidden duplicate navbars.');

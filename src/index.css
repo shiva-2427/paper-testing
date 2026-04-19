@@ -5,6 +5,7 @@ body {
   color: white;
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /* Global Navigation Strip specific styles so we can reuse them seamlessly */
@@ -26,4 +27,19 @@ body {
   font-weight: 600;
   color: #7C3AED;
   text-shadow: 0 0 15px rgba(124, 58, 237, 0.8);
+}
+
+@keyframes enterAnimation {
+  0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+}
+
+.page-enter {
+  animation: enterAnimation 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }

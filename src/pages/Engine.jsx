@@ -155,8 +155,10 @@ export default function Engine() {
       {/* Centers: 50%, 50% */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        animate={agentStatus === 'thinking' ? {
+          scale: 1, opacity: 1, boxShadow: ['0 0 20px rgba(255,100,60,0.2)', '0 0 50px rgba(255,100,60,0.5)', '0 0 20px rgba(255,100,60,0.2)']
+        } : { scale: 1, opacity: 1 }}
+        transition={agentStatus === 'thinking' ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.6, ease: "easeOut" }}
         style={{
           position: 'absolute',
           left: '50%',
@@ -174,10 +176,6 @@ export default function Engine() {
           flexDirection: 'column',
           zIndex: 20
         }}
-        animate={agentStatus === 'thinking' ? {
-          boxShadow: ['0 0 20px rgba(255,100,60,0.2)', '0 0 50px rgba(255,100,60,0.5)', '0 0 20px rgba(255,100,60,0.2)']
-        } : {}}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
       >
         <div style={{ color: '#FF8C66', fontSize: '14px', fontWeight: 600, fontFamily: '"Inter", sans-serif', marginBottom: '16px', letterSpacing: '0.1em' }}>
           🎯 RAW IDEA

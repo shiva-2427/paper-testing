@@ -48,7 +48,7 @@ export default function Pulse() {
   const rawViews = metrics?.views || 84200;
   const kViews = Math.floor(rawViews / 1000);
   
-  const insightText = "Posts ending with direct questions increased comment velocity by +48% over standard statements. I recommend asking users about their stack in your next 3 tweets.";
+  const insightText = "Hooks leading with 'Stop using X' relative to standard coding workflows generated 3.4x higher video retention times. I recommend pushing controversial workflow comparisons.";
   const typedInsight = useTypewriter(agentStatus === 'complete' || agentStatus === 'idle' ? insightText : "Waiting for engine output...", 20);
 
   return (
@@ -85,8 +85,8 @@ export default function Pulse() {
               <h2 className="text-emerald-500 text-xl font-bold tracking-widest uppercase">Growth Stack</h2>
             </div>
             <div className="flex flex-col gap-6 w-full">
-              <PostCard isPositive={true} delay={0.1} title="A deep dive into AI agent economies vs SaaS." platform="LinkedIn" views="142" likes="1.2k" comment="243" />
-              <PostCard isPositive={true} delay={0.2} title="Is cursor actually better than native IDEs?" platform="Twitter" views="88" likes="940" comment="112" />
+              <PostCard isPositive={true} delay={0.1} title="Stop using GitHub Copilot. Here's why." platform="LinkedIn" views="142" likes="1.2k" comment="243" />
+              <PostCard isPositive={true} delay={0.2} title="How to spin up a NextJS SaaS in 4 minutes." platform="Twitter" views="88" likes="940" comment="112" />
             </div>
           </div>
 
@@ -97,7 +97,7 @@ export default function Pulse() {
               <h2 className="text-red-500 text-xl font-bold tracking-widest uppercase">Muted Stack</h2>
             </div>
             <div className="flex flex-col gap-6 w-full">
-              <PostCard isPositive={false} delay={0.3} title="My thoughts on standard color palettes." platform="Blog" views="4" likes="12" comment="0" />
+              <PostCard isPositive={false} delay={0.3} title="My weekend thoughts on functional programming." platform="Blog" views="4" likes="12" comment="0" />
             </div>
           </div>
 

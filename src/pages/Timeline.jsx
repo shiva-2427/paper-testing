@@ -90,28 +90,28 @@ const DayColumn = ({ day, delay, slots }) => {
 export default function Timeline() {
   const schedule = [
     { day: 'Monday', slots: {
-      morning: [{ title: '3 lessons from 30 days shipping.', format: 'Text', status: 'scheduled' }],
-      afternoon: [{ title: 'Deep dive: The solopreneur thesis.', format: 'Document', status: 'review' }],
-      evening: [{ title: 'Script: Why you should learn React.', format: 'Video', status: 'drafting' }]
+      morning: [{ title: 'Thread: 5 Cursor features replacing my Junior Dev.', format: 'Thread', status: 'live' }],
+      afternoon: [{ title: 'Deep dive: Autonomous AI agent architecture.', format: 'Document', status: 'review' }],
+      evening: [{ title: 'Script: The 100x AI Engineer thesis.', format: 'Video', status: 'drafting' }]
     }},
     { day: 'Tuesday', slots: {
       morning: [],
-      afternoon: [{ title: 'Thread: Re-evaluating product-market fit.', format: 'Thread', status: 'scheduled' }],
+      afternoon: [{ title: 'Re-evaluating Claude 3.5 vs GPT-4o for coding.', format: 'Thread', status: 'scheduled' }],
       evening: []
     }},
     { day: 'Wednesday', slots: {
-      morning: [{ title: 'Live coding session announcement.', format: 'Text', status: 'live' }],
-      afternoon: [{ title: 'Is Cursor actually better than native IDEs?', format: 'Document', status: 'review' }],
+      morning: [{ title: 'Live build: $10k MRR SaaS absolute scratch.', format: 'Text', status: 'live' }],
+      afternoon: [{ title: 'My strict Cursor Rules configuration file.', format: 'Document', status: 'review' }],
       evening: []
     }},
     { day: 'Thursday', slots: {
       morning: [],
-      afternoon: [],
+      afternoon: [{ title: 'Video Edit: Why Prompt Engineering is dead.', format: 'Video', status: 'drafting' }],
       evening: []
     }},
     { day: 'Friday', slots: {
       morning: [],
-      afternoon: [{ title: 'Weekend thoughts on deep work.', format: 'Text', status: 'drafting' }],
+      afternoon: [{ title: 'Weekend thoughts: Will AI replace us?', format: 'Text', status: 'scheduled' }],
       evening: []
     }}
   ];

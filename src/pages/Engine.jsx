@@ -118,10 +118,10 @@ export default function Engine() {
     if (agentStatus === 'idle') return '';
     if (agentStatus === 'thinking') return 'generating...';
     switch(platform) {
-      case 'LinkedIn': return 'A deep dive into AI agent economies vs SaaS. Where the money is flowing.';
-      case 'Twitter': return 'Is cursor actually better than native IDEs? 5 real examples of where it wins.';
-      case 'Video': return 'Stop using generic color palettes in your projects. Here is why.';
-      case 'Blog': return 'The ultimate guide to building connected canvases in React.';
+      case 'LinkedIn': return 'The 10x Developer is dead. The 100x AI Engineer is here.';
+      case 'Twitter': return 'Stop using GitHub Copilot. Cursor just completely replaced it in my workflow.';
+      case 'Video': return 'Watch me build a $10k MRR SaaS from absolute scratch without writing code.';
+      case 'Blog': return 'A complete step-by-step guide to my secret Cursor Rules setup.';
       default: return '';
     }
   };

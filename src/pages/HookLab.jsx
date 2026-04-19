@@ -44,12 +44,12 @@ export default function HookLab() {
   const { hookWinner, setHookWinner } = useCanvasStore();
 
   const hooks = [
-    { id: 'A', hook: 'Why 90% of solo dev projects fail before hitting $1k MRR. A data-driven look.', ctr: 4.2 },
-    { id: 'B', hook: 'The solo dev trap: shipping features instead of finding users.', ctr: 2.8 },
-    { id: 'C', hook: 'Data reveals exactly why your indie hacking project is failing.', ctr: 5.1 },
-    { id: 'D', hook: 'Stop writing code. Start talking to users. Here is the $1k MRR playbook.', ctr: 3.4 },
-    { id: 'E', hook: 'I analyzed 100 failed solo projects. 90% made this exact same mistake.', ctr: 7.6 },
-    { id: 'F', hook: 'Building in public is a meme if you do not understand this one metric.', ctr: 4.9 },
+    { id: 'A', hook: 'Watch me build a $10k MRR SaaS from absolute scratch without writing a single line of raw code.', ctr: 4.2 },
+    { id: 'B', hook: 'The solo dev trap: Hand-coding features instead of leveraging Cursor AI.', ctr: 2.8 },
+    { id: 'C', hook: 'I let Claude 3.5 Sonnet write my entire backend. The results terrified me.', ctr: 5.1 },
+    { id: 'D', hook: 'Stop using GitHub Copilot. Cursor just completely replaced it in my workflow.', ctr: 3.4 },
+    { id: 'E', hook: '10x developers are dead. The 100x AI Engineer is here. Here is the framework.', ctr: 7.6 },
+    { id: 'F', hook: 'My secret Cursor Rules configuration that instantly doubles my coding output.', ctr: 4.9 },
   ];
 
   useEffect(() => {

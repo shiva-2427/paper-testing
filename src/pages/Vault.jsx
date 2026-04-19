@@ -42,12 +42,11 @@ const VaultCard = ({ title, score, status, platform1, platform2, delay }) => {
 
 export default function Vault() {
   const cards = [
-    { score: 96, status: 'UNUSED', title: 'How to build your first autonomous AI research agent using cursor and python.', platform1: 'Video', platform2: 'Twitter' },
-    { score: 94, status: 'IN ENGINE', title: 'Why 90% of solo dev projects fail before hitting $1k MRR. A data-driven look.', platform1: 'LinkedIn', platform2: 'Blog' },
-    { score: 92, status: 'UNUSED', title: 'The hidden cost of context switching. 3 frameworks to reclaim your focus blocks.', platform1: 'Twitter', platform2: null },
-    { score: 91, status: 'UNUSED', title: 'A deep dive into AI agent economies vs SaaS. Where the money is flowing.', platform1: 'Video', platform2: 'LinkedIn' },
-    { score: 85, status: 'IN ENGINE', title: 'Is cursor actually better than native IDEs? 5 real examples of where it wins.', platform1: 'Twitter', platform2: null },
-    { score: 68, status: 'UNUSED', title: 'Stop using generic color palettes.', platform1: 'Blog', platform2: null },
+    { score: 98, status: 'IN ENGINE', title: 'I let Claude 3.5 Sonnet write my entire backend. The results terrified me.', platform1: 'Video', platform2: 'Twitter' },
+    { score: 92, status: 'UNUSED', title: 'The myth of the 10x developer is dead. The 100x AI Engineer is here.', platform1: 'LinkedIn', platform2: null },
+    { score: 85, status: 'UNUSED', title: 'Stop using GitHub Copilot. Cursor just completely replaced it in my workflow.', platform1: 'Blog', platform2: null },
+    { score: 78, status: 'UNUSED', title: 'Watch me build and deploy a $10k MRR SaaS in 45 minutes.', platform1: 'Video', platform2: null },
+    { score: 71, status: 'PUBLISHED', title: '5 custom Cursor Rules that will instantly double your coding speed.', platform1: 'Twitter', platform2: 'LinkedIn' },
   ];
 
   return (

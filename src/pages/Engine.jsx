@@ -4,20 +4,20 @@ import useCanvasStore from '../store/canvasStore';
 const NodeCard = ({ title, status, platform, color, delay, pos, isVisible }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, x: "-50%", y: "-50%", scale: 0.95 }}
       animate={{ 
         opacity: isVisible ? 1 : 0.3,
         scale: isVisible ? 1 : 0.95,
         filter: isVisible ? 'blur(0px)' : 'blur(4px)',
-        y: 0
+        x: "-50%",
+        y: "-50%"
       }}
       transition={{ delay: isVisible ? delay : 0, duration: 0.6, ease: "easeOut" }}
-      className={`absolute flex flex-col items-start rounded-2xl p-6 w-[260px] sm:w-[320px] backdrop-blur-md transition-all hover:scale-[1.02] 
+      className={`absolute flex flex-col items-start rounded-2xl p-6 w-[260px] sm:w-[320px] backdrop-blur-md transition-shadow hover:shadow-[0_0_30px_rgba(255,255,255,0.1)]
         ${isVisible ? 'bg-zinc-900/80 border-white/20 shadow-2xl' : 'bg-zinc-900/30 border-white/5'}`}
       style={{
         left: pos.left,
         top: pos.top,
-        transform: 'translate(-50%, -50%)',
         zIndex: isVisible ? 10 : 5,
         pointerEvents: isVisible ? 'auto' : 'none'
       }}
@@ -105,13 +105,13 @@ export default function Engine() {
         <ConnectionLines trigger={agentStatus !== 'idle'} />
 
         <motion.div
-          initial={{ scale: 0.8, opacity: 0, y: -20 }}
+          initial={{ scale: 0.8, opacity: 0, x: "-50%", y: "-50%" }}
           animate={agentStatus === 'thinking' ? {
-            scale: 1, opacity: 1, y: 0, boxShadow: ['0 0 20px rgba(245,158,11,0.2)', '0 0 50px rgba(245,158,11,0.4)', '0 0 20px rgba(245,158,11,0.2)']
-          } : { scale: 1, opacity: 1, y: 0 }}
+            scale: 1, opacity: 1, x: "-50%", y: "-50%", boxShadow: ['0 0 20px rgba(245,158,11,0.2)', '0 0 50px rgba(245,158,11,0.4)', '0 0 20px rgba(245,158,11,0.2)']
+          } : { scale: 1, opacity: 1, x: "-50%", y: "-50%" }}
           transition={agentStatus === 'thinking' ? { duration: 3, repeat: Infinity, ease: "easeInOut" } : { duration: 0.6, ease: "easeOut" }}
           className="w-[320px] h-[220px] sm:w-[400px] sm:h-[240px] absolute z-30 flex flex-col p-8 rounded-3xl border border-white/20 bg-gradient-to-br from-amber-500/10 to-violet-500/10 backdrop-blur-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)]"
-          style={{ left: '50%', top: '50%', transform: 'translate(-50%, -50%)' }}
+          style={{ left: '50%', top: '50%' }}
         >
           <div className="text-amber-500 text-xs sm:text-sm font-bold tracking-widest uppercase mb-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
